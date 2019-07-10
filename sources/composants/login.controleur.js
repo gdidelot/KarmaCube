@@ -18,15 +18,49 @@ app.controller('logincontroleur', ["$injector", "$scope", "$location", function(
 	var dataservices = $injector.get('dataservices');
 	var userservices = $injector.get('userservices');
 	
+	var scene = undefined;
+	var camera = undefined;
+	var renderer = undefined;
+	var cube = undefined;
+	
     //#endregion Variables declarations
 	
 	//#region Private functions
+	
+	var animationCube = function() {
+		requestAnimationFrame( animationCube );
 
+		cube.rotation.x += 0.01;
+		cube.rotation.y += 0.01;
+
+		renderer.render( scene, camera );
+	};
+	
+	var initialisationScene = function() {
+		scene = new THREE.Scene();
+		camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+
+		renderer = new THREE.WebGLRenderer();
+		renderer.setSize( window.innerWidth, window.innerHeight );
+		document.body.appendChild( renderer.domElement );
+
+		var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+		var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+		cube = new THREE.Mesh( geometry, material );
+		scene.add( cube );
+
+		camera.position.z = 5;
+
+		animationCube();
+	};
+	
 	/**
     * Initialize the controller
     */
     var initializeController = function () {
 		console.log('logincontroleur.initializeController : Initialize the home controller.');
+		
+		initialisationScene();
 	};
 	
 	//#endregion Private functions

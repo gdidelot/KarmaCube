@@ -25,12 +25,14 @@ app.controller('accueilcontroller', ["$injector", "$scope", "$location", functio
     var initializeController = function () {
 		console.log('homecontroller.initializeController : Initialize the home controller.');
 		
+		/*
 		loginservices.checkLoggedUser(function(){
 			dataservices.getDefaultData(function(data){
 			}, function(){
 				
 			});
 		});
+		*/
 	};
 	
 	//#endregion Private functions
