@@ -1,0 +1,21 @@
+<div class="modal fade">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">{{ ::'Create_Prospect_List' | translate }}</h4>
+			</div>
+			<div class="modal-body">
+				<form id="prospectlistform" class="form-horizontal" name="prospectlistform">
+					<div class="form-group">
+						<label class="col-md-4 col-sm-4 control-label label-sorin text-left">{{ ::'Name' | translate }}</label>
+						<div class="col-md-8 col-sm-8"><input type="text" class="form-control" ng-model="object.Name" required></div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" ng-disabled="prospectlistform.$invalid" ng-click="close(object)" data-dismiss="modal">{{ ::'Valid' | translate }}</button>
+				<button class="btn btn-default" ng-click="close(false)" data-dismiss="modal">{{ ::'Close' | translate }}</button>
+			</div>
+		</div>
+	</div>
+</div>

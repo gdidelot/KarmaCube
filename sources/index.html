@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title></title>
+	
+	<!-- build:css themes/vendors.min.css -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<!-- endbuild -->
+
+  </head>
+
+  <body ng-app="karmacube">
+  
+	<div ng-view></div>
+
+	<!-- build:js scripts/vendors.min.js -->
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-i18n/angular-locale_fr-fr.js"></script>
+	<script src="bower_components/angular-route/angular-route.min.js"></script>
+	<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+	<script src="bower_components/angular-gettext/dist/angular-gettext.min.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+	<script src="bower_components/angular-ui-switch/angular-ui-switch.min.js"></script>
+	<script src="bower_components/linqjs/linq.js"></script>
+	<script src="bower_components/moment/min/moment.min.js"></script>
+	<script src="bower_components/moment/min/locales.js"></script>
+	<script src="bower_components/angular-modal-service/dst/angular-modal-service.min.js"></script>
+	<script src="bower_components/toastr/toastr.min.js"></script>
+	<script src="bower_components/ng-idle/angular-idle.min.js"></script>
+	<script src="bower_components/chart.js/dist/Chart.js"></script>
+	<script src="bower_components/angular-tooltips/dist/angular-tooltips.min.js"></script>
+    <script src="bower_components/switchery/dist/switchery.min.js"></script>
+    <script src="bower_components/angular-tree-control/angular-tree-control.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="bower_components/nprogress/nprogress.js"></script>
+    <script src="bower_components/Chart.js/dist/Chart.min.js"></script>
+    <script src="bower_components/gauge.js/dist/gauge.min.js"></script>
+    <script src="bower_components/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="bower_components/iCheck/icheck.min.js"></script>
+    <script src="bower_components/skycons/skycons.js"></script>
+    <script src="bower_components/Flot/jquery.flot.js"></script>
+    <script src="bower_components/Flot/jquery.flot.pie.js"></script>
+    <script src="bower_components/Flot/jquery.flot.time.js"></script>
+    <script src="bower_components/Flot/jquery.flot.stack.js"></script>
+    <script src="bower_components/Flot/jquery.flot.resize.js"></script>
+    <script src="bower_components/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="bower_components/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="bower_components/flot.curvedlines/curvedLines.js"></script>
+    <script src="bower_components/DateJS/build/date-fr-FR.js"></script>
+    <script src="bower_components/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="bower_components/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="bower_components/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="bower_components/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+	<script src="bower_components/angular-tour/dist/angular-tour-tpls.min.js"></script>
+	<script src="bower_components/angular-timeline/dist/angular-timeline.js"></script>
+	<!-- endbuild -->
+	
+	<!-- build:js scripts/main.min.js -->
+	<script src="scripts/sha256.js"></script>
+	<script src="scripts/angular-helper.js"></script>
+	<script src="scripts/unitofwork.js"></script>
+
+	<script src="langues/translations.js"></script>
+
+	<script src="app.js"></script>
+	<script src="app-config.js"></script>
+	<script src="app-routes.js"></script>
+	
+	<script src="directives/modals/modal.controller.js"></script>
+	
+	<script src="composants/accueil.controleur.js"></script>
+	<script src="composants/login.controleur.js"></script>
+	
+	
+	<script src="services/request.services.js"></script>
+	<script src="services/user.services.js"></script>
+	<script src="services/modal.services.js"></script>
+	<script src="services/tools.services.js"></script>
+	<script src="services/login.services.js"></script>
+	<script src="services/data.services.js"></script>
+	
+	<script src="scripts/date-filter.js"></script>
+	
+	<script src="directives/loader/loader.directive.js"></script>
+	
+	<!-- endbuild -->
+	
+	<!-- build:css themes/default/themes.min.css -->
+	<link rel="stylesheet" href="themes/defaut/style.css">
+	<!-- endbuild -->
+
+	
+  </body>
+</html>

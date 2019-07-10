@@ -1,0 +1,39 @@
+<div class="modal fade">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">{{ ::'Create_Prospect' | translate }}</h4>
+			</div>
+			<div class="modal-body">
+				<form id="prospectform" class="form-horizontal" name="prospectform">
+					<div class="form-group">
+						<label class="col-md-4 col-sm-4 control-label label-sorin text-left">{{ ::'TownHall' | translate }}</label>
+						<div class="col-md-8 col-sm-8">
+							<select class="form-control" ng-model="selectedtownhall" ng-options="townhall as (townhall.City + ' - ' + townhall.ZipCode) for townhall in object.townhalls track by $index" style="height:auto"></select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 col-sm-4 control-label label-sorin text-left">{{ ::'Email' | translate }}</label>
+						<div class="col-md-8 col-sm-8"><input type="email" class="form-control" ng-model="object.Email" required></div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 col-sm-4 control-label label-sorin text-left">{{ ::'Phone' | translate }}</label>
+						<div class="col-md-8 col-sm-8"><input type="text" class="form-control" ng-model="object.Phone" required></div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 col-sm-4 control-label label-sorin text-left">{{ ::'WebSite' | translate }}</label>
+						<div class="col-md-8 col-sm-8"><input type="text" class="form-control" ng-model="object.WebSite" required></div>
+					</div>
+				</form>
+				<hr />
+				<div class="dropfilearea" file-dropzone="" file="image" file-name="prospectList" data-max-file-size="10" data-event-name="dropProspectListEvent">
+					{{ ::'Drop_CSV_File' | translate }}
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" ng-disabled="prospectform.$invalid" ng-click="close(object)" data-dismiss="modal">{{ ::'Valid' | translate }}</button>
+				<button class="btn btn-default" ng-click="close(false)" data-dismiss="modal">{{ ::'Close' | translate }}</button>
+			</div>
+		</div>
+	</div>
+</div>

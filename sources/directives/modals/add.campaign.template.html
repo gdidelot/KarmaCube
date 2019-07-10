@@ -1,0 +1,59 @@
+<div class="modal fade">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">{{ ::'Add_Campaign' | translate }}</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" name="campaignform">
+					<div class="form-group">
+						<label class="col-md-4 col-sm-4 control-label label-sorin text-left">{{ ::'Name' | translate }}</label>
+						<div class="col-md-8 col-sm-8"><input type="text" class="form-control" ng-model="object.Name" required></div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 col-sm-4 control-label label-sorin text-left">{{ ::'Comments' | translate }}</label>
+						<div class="col-md-8 col-sm-8"><textarea rows="4" class="form-control" ng-model="object.Comments" required></textarea></div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 col-sm-4 control-label label-sorin text-left">{{ ::'MailTemplate' | translate }}</label>
+						<div class="col-md-8 col-sm-8">
+							<select class="form-control" ng-model="selectedmailtemplate" ng-options="mailtemplate as mailtemplate for mailtemplate in object.mailtemplates track by $index" style="height:auto"></select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 col-sm-4 control-label label-sorin text-left">{{ ::'StartDate' | translate }}</label>
+						<div class="col-md-8 col-sm-8">
+							<div class="row">
+								<div class="col-md-3 col-sm-3">
+									<input type="text" class="form-control" ng-model="object.StartDate.Day" placeholder="15" required>
+								</div>
+								<div class="col-md-1 col-sm-1">/</div>
+								<div class="col-md-3 col-sm-3">
+									<input type="text" class="form-control" ng-model="object.StartDate.Month" placeholder="06" required>
+								</div>
+								<div class="col-md-1 col-sm-1">/</div>
+								<div class="col-md-3 col-sm-3">
+									<input type="text" class="form-control" ng-model="object.StartDate.Year" placeholder="2018" required>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 col-sm-4 control-label label-sorin text-left">{{ ::'Mail_Test' | translate }}</label>
+						<div class="col-md-8 col-sm-8"><input type="text" class="form-control" ng-model="object.MailTest" required></div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 col-sm-4 control-label label-sorin text-left">{{ ::'Prospect_List' | translate }}</label>
+						<div class="col-md-8 col-sm-8">
+							<select class="form-control" ng-model="object.ProspectList" ng-options="prospectlist.Name for prospectlist in object.prospectlists" style="height:auto"></select>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-warning" ng-click="close(false)" data-dismiss="modal">{{ ::'Cancel' | translate }}</button>
+				<button class="btn btn-primary" ng-disabled="campaignform.$invalid" ng-click="close(object)" data-dismiss="modal">{{ ::'Valid' | translate }}</button>
+			</div>
+		</div>
+	</div>
+</div>

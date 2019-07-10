@@ -1,0 +1,50 @@
+<div class="modal fade" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{ ::'Login' | translate }}</h4>
+            </div>
+            <div class="modal-body">
+				<form id="authentication_form" role="form" class="loginform">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 col-md-6" style="margin-left:20px;">
+							<div class="row form-group">
+								<input id="authentication_email" type="email" class="form-control" placeholder="Votre mail" ng-model="login.identifier" autocomplete="email" required/>
+							</div>
+							<div class="row form-group">
+								<input id="authentication_password" type="password" class="form-control" placeholder="Votre mot de passe" ng-model="login.password" autocomplete="current-password" required/>
+							</div>
+							<div class="row form-group">
+								<button id="authentication_validation" ng-disabled="loginform.$invalid" class="btn btn-primary btn-lg form-control" ng-click="authenticateCommand(login)">{{ 'Valider' | translate }}</button>
+								<button class="btn btn-success btn-lg form-control" ng-click="createAccountCommand()">{{ 'Create_Account' | translate }}</button>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-4" style="margin-left:20px;">
+							<div class="row form-group">
+								<a class="btn btn-block btn-lg btn-social btn-google" style="color: white"  ng-click="googleLoginCommand()">
+									<span class="fa fa-google"></span>
+									{{ 'Google_Connection' | translate }} 
+								</a>
+							</div>
+							<div class="row form-group">
+								<a class="btn btn-block btn-lg btn-social btn-facebook" style="color: white" ng-click="facebookLoginCommand()">
+									<span class="fa fa-facebook"></span>
+									{{ 'Facebook_Connection' | translate }} 
+								</a>
+							</div>
+							<div class="row form-group">
+								<a class="btn btn-block btn-lg btn-social btn-microsoft" style="color: white" ng-click="microsoftLoginCommand()">
+									<span class="fa fa-windows"></span>
+									{{ 'Microsoft_Connection' | translate }} 
+								</a>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default" ng-click="close(false)" data-dismiss="modal">{{ ::'Cancel' | translate }}</button>
+			</div>
+        </div>
+    </div>
+</div>

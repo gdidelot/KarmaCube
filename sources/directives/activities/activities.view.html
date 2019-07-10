@@ -1,0 +1,27 @@
+<div class="x_panel">
+	<div class="x_title">
+		<h2>{{ ::'Recent_Activities' | translate }}</h2>
+		<ul class="nav navbar-right panel_toolbox">
+			<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+		</ul>
+	  <div class="clearfix"></div>
+	</div>
+	<div class="x_content">
+		<loader displaying="loadingactivities" size="50" margin="0"/>
+		<div class="dashboard-widget-content">
+			<ul class="list-unstyled timeline widget">
+				<li ng-repeat="activity in activities track by $index">
+					<div class="block">
+						<div class="block_content">
+							<h2 class="title"><a>{{ activity.Title | translate }}</a></h2>
+							<div class="byline">
+								<span>{{ activity.CreationDate.date | malezhiveDate }}</span> {{ ::'By' | translate }} <a>{{ activity.FromUser.Firstname }} {{ activity.FromUser.Lastname }}</a>
+							</div>
+							<p class="excerpt">{{ activity.Message }}</p>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,45 @@
+<div class="modal fade">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title text-center">
+					<p>{{ 'Reportings' | translate }}</p>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div data-ride="carousel" class="carousel carousel-fade" id="carousel-reportings">
+					<ol class="carousel-indicators">
+						<li ng-repeat="category in object.categories" data-slide-to="{{ $index }}" ng-class="{'active' : $index === 0 }" data-target="#carousel-reportings"></li>
+					</ol>
+					<div role="listbox" class="carousel-inner">
+						<div ng-repeat="category in object.categories" class="carousel-item" ng-class="{'active' : $index === 0 }">
+							<div class="carousel-caption">
+								<h3>{{ object.scope.reportingcategories[category.getSource()[0].Category].legend }}</h3>
+								<p>{{ category.getSource()[0].Comments }}</p>
+							</div>
+							<div class="row form-group">
+								<p style="float:left;">
+									<span ng-repeat="reportingtype in category.getSource()">
+										<issuebutton title="{{ reportingtype.Name | translate }}" icon="{{ reportingtype.Icon }}" callback="object.scope.createNewIssueCommand(reportingtype)"></issuebutton>
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+					<a data-slide="prev" role="button" target="_self" href="#carousel-reportings" class="left carousel-control">
+					  <span aria-hidden="true" class="icon-prev"></span>
+					  <span class="sr-only">Previous</span>
+					</a>
+					<a data-slide="next" role="button" target="_self" href="#carousel-reportings" class="right carousel-control">
+					  <span aria-hidden="true" class="icon-next"></span>
+					  <span class="sr-only">Next</span>
+					</a>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default" ng-click="close(false)" data-dismiss="modal">{{ ::'Cancel' | translate }}</button>
+				<button class="btn btn-success" ng-click="close(true)" data-dismiss="modal">{{ ::'Valid' | translate }}</button>
+			</div>
+		</div>
+	</div>
+</div>

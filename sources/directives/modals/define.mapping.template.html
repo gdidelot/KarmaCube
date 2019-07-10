@@ -1,0 +1,25 @@
+<div class="modal fade">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">{{ ::'Define_Mapping' | translate }}</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" name="mappingform">
+					<div ng-repeat="data in object.data" class="row form-group">
+						<label class="col-md-2 col-sm-2 control-label label-sorin text-left">{{ ::'Column' | translate }}</label>
+						<div class="col-md-4 col-sm-4"><input type="text" class="form-control" ng-model="data" required></div>
+						<label class="col-md-2 col-sm-2 control-label label-sorin text-left">{{ ::'Property' | translate }}</label>
+						<div class="col-md-4 col-sm-4">
+							<select class="form-control" ng-model="data.property" ng-options="property.translation for property in object.properties" style="height:auto"></select>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-warning" ng-click="close(false)" data-dismiss="modal">{{ ::'Cancel' | translate }}</button>
+				<button class="btn btn-primary" ng-disabled="mappingform.$invalid" ng-click="close(object)" data-dismiss="modal">{{ ::'Valid' | translate }}</button>
+			</div>
+		</div>
+	</div>
+</div>

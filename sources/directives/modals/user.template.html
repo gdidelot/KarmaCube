@@ -1,0 +1,40 @@
+<div class="modal fade">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">{{ ::'User_Informations' | translate }}</h4>
+			</div>
+			<div class="modal-body" style="padding:50px">
+				<div class="row form-group">
+					<div class="col-md-8">
+						<form class="form-horizontal" name="userinfosform">
+							<div class="form-group">
+								<label class="row control-label label-sorin text-left">{{ ::'FirstName' | translate }}</label>
+								<div class="row">{{ object.Firstname }}</div>
+							</div>
+							<div class="form-group">
+								<label class="row control-label label-sorin text-left">{{ ::'LastName' | translate }}</label>
+								<div class="row">{{ object.Lastname }}</div>
+							</div>
+							<div class="form-group">
+								<label class="row control-label label-sorin text-left">{{ ::'Email' | translate }}</label>
+								<div class="row">{{ object.Email }}</div>
+							</div>
+							<div class="form-group">
+								<label class="row control-label label-sorin text-left">{{ ::'PhoneNumber' | translate }}</label>
+								<div class="row">{{ object.PhoneNumber }}</div>
+							</div>
+							<div class="form-group">
+								<label class="row control-label label-sorin text-left">{{ ::'Address' | translate }}</label>
+								<div class="row">{{ object.Address }}</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default" ng-click="close(false)" data-dismiss="modal">{{ ::'Close' | translate }}</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,62 @@
+<div id="modal_announcement" class="modal fade">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">
+					<div class="row">
+						<div class="col-xs-2 col-md-2 col-lg-2 offset-xs-5 offset-md-5 offset-lg-5">
+							<p><i class="{{ object.reportingCategory.Icon }} fa-4x"></i></p>
+						</div>
+					</div>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row form-group">
+					<div class="col-xs-4 col-md-4 col-lg-4">
+						 <div class="progress-wrapper">
+							<div class="progress ng-cloak" style="top:27%">{{ object.maxvalue - object.currentvalue }}</div>
+							<round-progress
+								max="object.maxvalue"
+								current="object.currentvalue"
+								color="#25a025"
+								bgcolor="#25a025"
+								radius="100"
+								stroke="20"
+								semi="false"
+								rounded="true"
+								clockwise="true"
+								responsive="true"
+								duration="800"
+								animation="easeOutElastic"
+								animation-delay="0">
+							</round-progress>
+						</div>
+					</div>
+					<div class="col-xs-8 col-md-8 col-lg-8">
+						<div class="row form-group">
+							<b>{{ ::'Do_You_Confirm_The_Reporting_Of_Type' | translate }} <br />
+							<pretty-check value="0" ng-model="subscription.User.Type" label="'Comptable'"></pretty-check> <i>{{ object.reportingCategory.Name | translate }}</i></b>
+						</div>
+						<div class="row form-group">
+							{{ ::'Comments' | translate }}
+						</div>
+						<div class="row form-group">
+							<textarea rows="4" class="form-control" ng-model="reportingcomments" placeholder="Laissez un commentaire"></textarea>
+						</div>
+						<hr />
+						<div class="row form-group">
+							{{ ::'Touch_Screen_To_Snapshot' | translate }}
+						</div>
+						<div class="row form-group">
+							<camera></camera>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default" ng-click="close(false)" data-dismiss="modal">{{ ::'Cancel' | translate }}</button>
+				<button class="btn btn-success" ng-click="close(reportingcomments)" data-dismiss="modal">{{ ::'Valid' | translate }}</button>
+			</div>
+		</div>
+	</div>
+</div>

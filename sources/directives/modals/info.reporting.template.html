@@ -1,0 +1,69 @@
+<div id="modal_announcement" class="modal fade">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">
+					<div class="row">
+						<div class="col-xs-2 col-md-2 col-lg-2 offset-xs-5 offset-md-5 offset-lg-5">
+							<p><i class="{{ object.reporting.Type.Icon }} fa-4x"></i></p>
+						</div>
+					</div>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row form-group">
+					<i>{{ object.reporting.Comments }}</i>
+				</div>
+				<div class="row form-group">
+					<ul class="timeline" ng-class="{ 'smartphone-timeline col-xs-10 col-md-10 offset-md-1 offset-md-1' : object.rootscope.issmartphone, 'timeline-horizontal': !object.rootscope.issmartphone}">
+						<li class="timeline-item" ng-repeat="history in object.reporting.histories">
+							<div class="timeline-badge primary">
+								<span ng-if="history.NewState !== undefined && history.NewState !== null" ng-switch="history.NewState">
+									<i ng-switch-when="null || undefined" class="fa fa-bullhorn"></i>
+									<i ng-switch-when="0" class="fa fa-bullhorn"></i>
+									<i ng-switch-when="1" class="fa fa-check"></i>
+									<i ng-switch-when="2" class="fa fa-spinner"></i>
+									<i ng-switch-when="3" class="fa fa-check-square-o"></i>
+									<i ng-switch-when="4" class="fa fa-ban"></i>
+								</span>
+							</div>
+							<div class="timeline-panel">
+								<div class="timeline-heading">
+									<b class="timeline-title">{{ object.reportingstates[history.NewState].legend }}</b>
+									<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{ history.CreationDate.date | urbaniumDate }}</small></p>
+								</div>
+								<div class="timeline-body">
+									<p></p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<hr />
+				<div class="row form-group">
+					<div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+						<img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive"> 
+                    </div>
+                    <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
+                        <div class="container" >
+							<h2>{{ object.reporting.Reporter.Pseudo }}</h2>
+							<p><b>{{ ::'User' | translate }}</b></p>
+                        </div>
+                        <hr />
+                        <div class="row form-group">
+							<h3>{{ ::'Score' | translate }}</h3> 
+						</div>
+						<div class="row form-group">
+							<label class="badge badge-success maxi-text">{{ object.reporting.Reporter.Score }}</label>
+						</div>
+                        <hr />
+                        <div class="col-sm-12 col-xs-12 tital" >{{ ::'Date_Of_Joining' | translate }}: {{ object.reporting.Reporter.CreationDate.date | urbaniumDate }}</div>
+                    </div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default" ng-click="close(false)" data-dismiss="modal">{{ ::'Close' | translate }}</button>
+			</div>
+		</div>
+	</div>
+</div>

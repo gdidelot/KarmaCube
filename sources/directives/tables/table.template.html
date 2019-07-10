@@ -1,0 +1,76 @@
+<div class="card mb-3">
+    <div class="card-header">
+		<div class="row">
+			<div class="col-md-4">
+				<i ng-attr-class="{{ icon }}"></i>  {{ title | translate }}
+			</div>
+			<div class="col-md-4">
+				<a ng-click="displayPageCommand(currentpage - 1)"><i class="fa fa-arrow-left"></i></a> {{ currentpage }} / {{ pages }} <a ng-click="displayPageCommand(currentpage + 1)"><i class="fa fa-arrow-right"></i></a>
+			</div>
+			<div class="col-md-4">
+				<div class="dropdown float-right">
+					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						{{ ::'Actions' | translate }}
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a ng-repeat="action in actions" class="dropdown-item" ng-click="action.function()">{{ ::action.name | translate }}</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item">
+							{{::'MaxPerPage' | translate}}
+							<select ng-model="limit" id="limitselection">
+								<option value="10">10</option>
+								<option value="50">50</option>
+								<option value="100">100</option>
+							</select>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+				<th></th>
+				<th ng-repeat="header in headers track by $index">
+					{{ ::header | translate }}
+				</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+				<th></th>
+				<th ng-repeat="header in headers track by $index">
+					{{ ::header | translate }}
+				</th>
+            </tr>
+          </tfoot>
+          <tbody>
+            <tr ng-repeat="data in filtereddata">
+				<td><pretty-checkbox ng-model="data.selected" label="''"></pretty-checkbox></td>
+				<td ng-repeat="property in properties track by $index">
+					<span ng-switch="property.type">
+						<span ng-switch-when="length">{{ data[property.name].length }}</span>
+						<span ng-switch-when="datetime">{{ data[property.name].date | urbaniumDate }}</span>
+						<span ng-switch-default>{{ data[property.name] }}</span>
+					</span>
+				</td>
+				<!--
+				<td>#{{ data.Id }}</td>
+				<td>{{ data.TownHall.City }}</td>
+				<td>{{ data.TownHall.ZipCode }}</td>
+				<td>{{ data.Email }}</td>
+				<td>{{ data.Phone }}</td>
+				<td>{{ data.WebSite }}</td>
+				<td>{{ data.ModificationDate.date | urbaniumDate }}</td>
+				<td>{{ data.CreationDate.date | urbaniumDate }}</td>
+				-->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+	</div>
+    <div class="card-footer small text-muted">{{::'Updated' | translate }} {{ lastupdate }}</div>
+</div>

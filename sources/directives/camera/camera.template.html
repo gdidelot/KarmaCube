@@ -1,0 +1,6 @@
+<div>
+	<p style="color:red" ng-if="!issupported">{{ ::'Snapshot_Not_Available' | translate }}</p>
+	<video id="video_camera" ng-show="issupported" autoplay ng-click="snapshot()"></video>
+	<img ng-show="issupported" id="element_snapshot" src="" alt="capture" style="width:100%;height:auto;">
+	<canvas ng-show="issupported" style="display:none;"></canvas>
+</div>

@@ -1,0 +1,44 @@
+<div ng-show="list.length > 0 || selectedfilters.length > 0">
+    <div class="row">
+		<div class="col-md-4"></div>
+        <div class="col-md-8 container-filter-btn">
+            <button id="Internal_Filter_Open" ng-click="toggleShowFilterCommand()" type="button" class="btn btn-default">
+                <i class="fa fa-filter pull-left"></i>
+            </button>
+            <div id="Internal_Filter_Item_{{::filter.filterName}}" class="selected-filter-card" ng-repeat="filter in filters track by filter.filterName" ng-show="filter.selected">
+                <label style="color:white;">{{ filter.filterName }}</label>
+                <i id="Internal_Filter_Item_{{::filter.filterName}}_Close" class="fa fa-times" ng-click="resetFilterCommand($event, filter)"></i>
+            </div>
+        </div>
+    </div>
+    <div id="Internal_Filter_Advanced_Popup" class="row" ng-show="isPopupVisible">
+        <div class="col-md-8">
+            <div class="popup animated fadeIn">
+                <div class="panel panel-sorin">
+                    <div class="panel-heading">
+                        {{ ::'Filters' | translate }}
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal" novalidate>
+                            <div class="form-group row">
+                                <label class="control-label label-sorin control-label-left"><b>{{ ::'By' | translate }} {{ ::'Name' | translate }}</b></label>
+                                <hr />
+                                <div class="form-group row">
+                                    <div class="row" style="margin-left: 15px;">
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" ng-model="filters.ReportingLabel.value" ng-change="checkInputTextValue(filters.ReportingLabel)" placeholder="{{ ::'Search_Text' | translate }}" ng-value="0">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group cell-sorin-center">
+                            <hr />
+                            <button type="button" ng-click="toggleShowFilterCommand()" class="btn btn-primary">{{::'Close' | translate}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

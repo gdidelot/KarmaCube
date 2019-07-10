@@ -1,0 +1,31 @@
+<div class="modal fade">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">{{ ::'Add_reporting_Team' | translate }}</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" name="teamuserform">
+					<div class="form-group">
+						<label class="col-md-4 col-sm-4 control-label label-sorin text-left">{{ ::'Category' | translate }}</label>
+						<div class="col-md-8 col-sm-8">
+							<select class="form-control" data-ng-options="reportingcategory as reportingcategory.legend for reportingcategory in object.reportingcategories" data-ng-model="reportingteam.Category" style="height:auto" ng-change="object.selectReportingTypesCommand(reportingteam.Category)" required></select>	
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 col-sm-4 control-label label-sorin text-left">{{ ::'Type' | translate }}</label>
+						<div class="col-md-8 col-sm-8"><select class="form-control" ng-model="reportingteam.Type" ng-options="reportingtype as reportingtype.Name for reportingtype in object.selectedreportingtypes track by reportingtype.Id" style="height:auto" required></select></div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 col-sm-4 control-label label-sorin text-left">{{ ::'Team' | translate }}</label>
+						<div class="col-md-8 col-sm-8"><select class="form-control" ng-model="reportingteam.Team" ng-options="team as team.Name for team in object.teams track by team.Id" style="height:auto" required></select></div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" ng-disabled="teamuserform.$invalid" ng-click="close(reportingteam)" data-dismiss="modal">{{ ::'Valid' | translate }}</button>
+				<button class="btn btn-default" ng-click="close(false)" data-dismiss="modal">{{ ::'Close' | translate }}</button>
+			</div>
+		</div>
+	</div>
+</div>
