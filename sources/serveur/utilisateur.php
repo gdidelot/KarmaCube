@@ -10,8 +10,7 @@ class Utilisateur
 
     protected $Nationalite;
     
+    protected $mot de passe;
+    protected $id
     
-}
-
-
-?>
+}  
