@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<mail>
+	<subject>Enregistrement sur la plateforme Malesherb'Unis</subject>
+	<messagetext>
+		Bonjour #firstname #lastname,
+		Malesherb'Unis vous souhaite la bienvenue.
+		Ce mail, #usermail, nous permettra de rester en communication sur le MalesherbUnis 2018 !
+		Votre identifiant est votre adresse mail et votre mot de passe est '#password'. Afin de valider votre compte,
+		Afin de valider votre compte, veuillez naviguer sur ce lien suivant : : #servicebase?validemail=#hashPassword !
+		Cette validation a valeur a acceptation des conditions d'utilisation du site web <a href="#rootsite#/cgucgv" target="_blank">CGU</a>
+		<p>Cordialement</p>
+		<p>Malesherb'Unis</p>
+	</messagetext>
+	<messagehtml>
+		<div>
+			<div style="background-color:#f2f2f2">
+				<table cellpadding="0" cellspacing="0" border="0" bgcolor="#f2f2f2" width="100%" class="x_fond">
+					<tbody>
+						<tr>
+							<td align="center">
+								<table cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" width="600" align="center" class="x_general">
+									<tbody>
+										<tr>
+											<td bgcolor="#FFFFFF" valign="top"><img data-imagetype="External" src="https://malesherbunis.fr/themes/default/pictures/header.png" alt="" border="0" style="display:block" /></td>
+										</tr>
+										<tr>
+										<td align="center">
+											<table cellpadding="0" cellspacing="0" border="0" width="480" class="x_content">
+												<tbody>
+													<tr>
+														<td height="20"> </td>
+													</tr>
+													<tr>
+														<td align="center"><font color="#353A5E" face="Arial, Helvetica, sans-serif" size="5" style="font-size:24px">Bienvenue sur Malesherb'Unis</font> </td>
+													</tr>
+													<tr>
+														<td align="left"><br />
+														<font color="#737373" face="Arial, Helvetica, sans-serif" size="3" style="font-size:15px; line-height:20px">
+															<p></p>
+															<p>Bonjour #firstname #lastname,</p>
+															<p></p>
+															<p><strong>Malesherb'Unis</strong> vous souhaite la bienvenue.</p>
+															<p>Ce mail, <b>#usermail</b>, permettra de rester en communication sur le MalesherbUnis 2018 !</p>
+															<p>Votre identifiant est votre adresse mail et votre mot de passe provisoire est <strong>#password</strong></p><br />
+															<p><strong>Afin de valider votre compte, veuillez cliquer sur le bouton se situant en bas du mail.</strong></p>
+															<p>Cette validation a valeur à acceptation des conditions d'utilisation du site web <a href="#rootsite#/cgucgv" target="_blank">CGU</a></p>
+															<p>Cordialement</p>
+															<p>Malesherb'Unis</p>
+															<br />
+															<br />
+														</font>
+														</td>
+													</tr>
+													<tr>
+														<td align="left"></td>
+													</tr>
+													<tr>
+														<td align="center"><br />
+														<br />
+														<table width="100%" border="0" cellspacing="0" cellpadding="0">
+															<tbody>
+																<tr>
+																	<td width="50%" style="padding:10px">
+																		<table border="0" cellspacing="0" cellpadding="0" align="center" width="100%">
+																			<tbody>
+																				<tr>
+																				<td align="center" bgcolor="#25a025" style="font-weight:600; width:100%; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px">
+																				<a href="#servicebase?validemail=#hashPassword" target="_blank" rel="noopener noreferrer" style="font-size:16px; font-family:Helvetica,Arial,sans-serif; color:#ffffff; text-decoration:none; text-decoration:none; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; padding:12px 18px; border:1px solid #25a025; display:block">Valider mon inscription</a></td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														</td>
+													</tr>
+													<tr>
+														<td height="50">   </td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+										</tr>
+										<tr>
+											<td bgcolor="#CEDBDE" valign="bottom"><img data-imagetype="External" src="https://malesherbunis.fr/themes/default/pictures/footer_mail.gif" alt="" border="0" style="display:block" /></td>
+										</tr>
+										<tr>
+											<td align="center" bgcolor="#f2f2f2">
+											<br />
+											<img data-imagetype="External" src="http://factory4net.fr/themes/default/images/logo.png" alt="Malt" border="0" /> <br />
+											<font color="#737373" face="Arial, Helvetica, sans-serif" size="1" style="font-size:11px; line-height:20px"><a href="#facebooklink" target="_blank" rel="noopener noreferrer" style="color:#737373; text-decoration:none">Facebook</a><br />
+											</font>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p width="1" border="0" style="background-color:#f2f2f2; color:#f2f2f2; margin-top:0">kffj6c?t0sn944?vaxkayb7 9h!vscqgwu 4h2x3x04xoe1dh3va69zz!yoe </p>	
+			</div>
+		</div>
+	</messagehtml>
+</mail>
+
