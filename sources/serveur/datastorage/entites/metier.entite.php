@@ -1,8 +1,8 @@
 <?php
 
-namespace Serveur\Entites
+namespace Serveur\Entites;
 
-class Metier : Entite
+class Metier extends Entite
 {
     protected $Nom;
 

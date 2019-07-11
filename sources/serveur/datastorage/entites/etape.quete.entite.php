@@ -1,8 +1,8 @@
 <?php
 
-namespace Serveur\Entites
+namespace Serveur\Entites;
 
-class EtapeQuete : Entite
+class EtapeQuete extends Entite
 {
     protected $Numero;
 

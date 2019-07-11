@@ -1,8 +1,8 @@
 <?php
 
-namespace Serveur\Entites
+namespace Serveur\Entites;
 
-class Materiau : Entite
+class Materiau extends Entite
 {
 
     protected $Texture;

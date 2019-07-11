@@ -1,8 +1,8 @@
 <?php
 
-namespace Serveur\Entites
+namespace Serveur\Entites;
 
-class Pioche : Outil
+class Pioche extends Outil
 {
     
 }

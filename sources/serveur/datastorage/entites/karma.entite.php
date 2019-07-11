@@ -1,8 +1,8 @@
 <?php
 
-namespace Serveur\Entites
+namespace Serveur\Entites;
 
-class Karma : Entite
+class Karma extends Entite
 {
     protected $Confiance;
 

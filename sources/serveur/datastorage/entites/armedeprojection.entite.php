@@ -1,8 +1,8 @@
 <?php
 
-namespace Serveur\Entites
+namespace Serveur\Entites;
 
-class ArmeDeProjection : Arme
+class ArmeDeProjection extends Arme
 {
     protected $Munition;
 }

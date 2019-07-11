@@ -1,6 +1,6 @@
 <?php
 
-namespace Serveur\Entites
+namespace Serveur\Entites;
 
 class Entite
 {

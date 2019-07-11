@@ -1,8 +1,8 @@
 <?php
 
-namespace Serveur\Entites
+namespace Serveur\Entites;
 
-class Hache : Outil, Arme
+class Hache extends Outil, Arme
 {
     
 }

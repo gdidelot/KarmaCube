@@ -1,8 +1,8 @@
 <?php
 
-namespace Serveur\Entites
+namespace Serveur\Entites;
 
-class Pelle : Outil
+class Pelle extends Outil
 {
     
 }

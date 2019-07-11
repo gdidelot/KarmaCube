@@ -7,9 +7,9 @@
 * @package Core\CoreComponents
 * @subpackage UsersManager
 */
-namespace Core\CoreComponents\GestionUtilisateurs;
+namespace Serveur\Composants\GestionUtilisateurs;
 
-use Core;
+use Serveur;
 
 /**
 * This interface provide all accessible methods on users module
@@ -18,7 +18,7 @@ use Core;
 *
 * @exception Utilisateur_Inconnu
 */
-class Users implements IUsers
+class Utilisateurs implements IUtilisateurs
 {
 	/**
 	* The entity manager
@@ -29,14 +29,7 @@ class Users implements IUsers
 	* The user repository
 	*/
 	protected $userRepository;
-	
-	/**
-    * The file system helpers instance
-	* @var Core\CoreComponents\DocumentsManager\FileSystemHelpers
-	* @see Core\CoreComponents\DocumentsManager\FileSystemHelpers
-	*/
-	private $FileSystemHelpers;
-	
+		
 	/**
 	* The default constructor
 	*/

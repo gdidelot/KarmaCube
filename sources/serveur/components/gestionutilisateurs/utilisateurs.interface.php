@@ -7,14 +7,14 @@
 * @package Core\CoreComponents
 * @subpackage UsersManager
 */
-namespace Core\CoreComponents\GestionUtilisateurs;
+namespace Serveur\Composants\GestionUtilisateurs;
 
 /**
 * This interface provide all accessible methods on users module
 *
 * @method ServiceResponse authenticate($mail, $password)
 */
-interface IUsers
+interface IUtilisateurs
 {
     /**
     * Authenticate an user

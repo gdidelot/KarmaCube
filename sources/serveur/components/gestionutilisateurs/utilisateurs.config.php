@@ -13,6 +13,7 @@
 require_once(COMPONENTS_DIR . 'gestionutilisateurs/utilisateurs.interface.php');
 require_once(COMPONENTS_DIR . 'gestionutilisateurs/utilisateurs.services.php');
 
+require_once(CONTRACTS_DIR . 'entite.entite.php');
 require_once(CONTRACTS_DIR . 'utilisateur.entite.php');
 
 // @codeCoverageIgnoreEnd

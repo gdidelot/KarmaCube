@@ -41,9 +41,9 @@ class ProxyMethod
 */
 class ProxyGenerator
 {
-	const PROXY_CLASS_NAME = 'CoreService'; 
+	const PROXY_CLASS_NAME = 'Services'; 
 	
-	const PROXY_FILE_NAME = 'coreservice.class.php'; 
+	const PROXY_FILE_NAME = 'services.class.php'; 
 	
 	/**
 	* @var array $Interfaces The used interfaces with their namespace
@@ -93,14 +93,16 @@ class ProxyGenerator
 		
 		foreach($components as $component)
 		{
+			echo $component . '\n';
+			
 			array_push($this->ComponentsName, ucwords($component));
 			
-			$path = COMPONENTS_DIR . $component  . 'Manager';
+			$path = COMPONENTS_DIR . 'Gestion' . $component;
 		
 			foreach (glob($path . "/*.services.php") as $filename) 
 			{
 				$arrayName = explode(".", basename($filename));
-				$name = 'Core\\CoreComponents\\' . ucwords($component)  . 'Manager' . '\\'. ucwords($arrayName[0]);
+				$name = 'Serveur\\Composants\\Gestion' . ucwords($component)  . '\\'. ucwords($arrayName[0]);
 				
 				array_push($this->ComponentClasses, $name);
 			}
@@ -119,12 +121,12 @@ class ProxyGenerator
 		$header .= sprintf('%s%s', "* Service access layer class", "\n");   
 		$header .= sprintf('%s%s%s', "* Auto generated on the ",  date("Y-m-d H:i:s"), "\n");
 		$header .= sprintf('%s%s', "*/", "\n");
-		$header .= sprintf('%s%s', "namespace Core;", "\n\n");
+		$header .= sprintf('%s%s', "namespace Serveur;", "\n\n");
         $header .= sprintf('%s%s', "/**", "\n");
 		$header .= sprintf('%s%s', "* Service access layer class", "\n");   
 		$header .= sprintf('%s%s%s', "* Auto generated on the ",  date("Y-m-d H:i:s"), "\n");
 		$header .= sprintf('%s%s', "*/", "\n");
-		$header .= sprintf('%s%s', "class CoreService", "\n");
+		$header .= sprintf('%s%s', "class Services", "\n");
 		$header .= sprintf('%s%s', "{", "\n");
 	
 		$interfacesMembers = $this->generateInterfacesMembers();
@@ -153,6 +155,8 @@ class ProxyGenerator
 	
 		foreach($this->ComponentClasses as $class)
 		{
+			echo $class . '\n';
+			
 			$interface = class_implements($class);
 			$methods_implemented = get_class_methods(array_shift($interface));
 			$reflector = new ReflectionClass($class);
@@ -163,7 +167,7 @@ class ProxyGenerator
 			{
 				$proxyMethod = new ProxyMethod();
 				
-				$proxyMethod->Component =  str_replace("Manager", "",explode("\\", $class)[count(explode("\\", $class)) - 2]);
+				$proxyMethod->Component =  str_replace("Gestion", "",explode("\\", $class)[count(explode("\\", $class)) - 2]);
 				$proxyMethod->MethodName = $method;
 				$proxyMethod->MethodInterface = explode("\\", $interfaces[0])[count(explode("\\", $interfaces[0])) - 1];
 				$proxyMethod->MethodComponent = explode("\\", $class)[count(explode("\\", $class)) - 1];
@@ -253,7 +257,7 @@ class ProxyGenerator
 			
 		foreach($filteredProxy as $proxyMethod)
 		{
-			$result .= sprintf('%s%s$this->%s = new CoreComponents\\%sManager\\%s(); %s', "\t", "\t", $proxyMethod->MethodInterface, $proxyMethod->Component, $proxyMethod->MethodComponent, "\n");
+			$result .= sprintf('%s%s$this->%s = new Composants\\Gestion%\\%s(); %s', "\t", "\t", $proxyMethod->MethodInterface, $proxyMethod->Component, $proxyMethod->MethodComponent, "\n");
 		}	
 		
 		$result .= sprintf('%s%s%s', "\t", "}", "\n");

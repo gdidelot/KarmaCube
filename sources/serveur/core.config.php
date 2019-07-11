@@ -19,7 +19,7 @@ if (defined('COMPONENTS_DIR') == false) {
     define('COMPONENTS_DIR', CORE_DIR .'components/');
 }
 if (defined('CONTRACTS_DIR') == false) {
-    define('CONTRACTS_DIR', CORE_DIR .'datastorage/entities/');
+    define('CONTRACTS_DIR', CORE_DIR .'datastorage/entites/');
 }
 if (defined('DATASTORAGE_DIR') == false) {
     define('DATASTORAGE_DIR', CORE_DIR .'datastorage/');

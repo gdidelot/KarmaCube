@@ -1,8 +1,8 @@
 <?php
 
-namespace Serveur\Entites
+namespace Serveur\Entites;
 
-class ArmeDePoing : Arme
+class ArmeDePoing extends Arme
 {
     
 }
