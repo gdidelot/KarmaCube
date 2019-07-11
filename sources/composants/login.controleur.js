@@ -32,6 +32,8 @@ app.controller('logincontroleur', ["$injector", "$scope", "$location", function(
 
 		cube.rotation.x += 0.01;
 		cube.rotation.y += 0.01;
+		
+		cube.position.x += 0.01;
 
 		renderer.render( scene, camera );
 	};
@@ -45,7 +47,7 @@ app.controller('logincontroleur', ["$injector", "$scope", "$location", function(
 		document.body.appendChild( renderer.domElement );
 
 		var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-		var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+		var material = new THREE.MeshBasicMaterial( { color: 0x229922 } );
 		cube = new THREE.Mesh( geometry, material );
 		scene.add( cube );
 
