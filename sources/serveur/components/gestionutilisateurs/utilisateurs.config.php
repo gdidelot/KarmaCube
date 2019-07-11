@@ -10,8 +10,8 @@
 // @codeCoverageIgnoreStart
 
 //includes
-require_once(COMPONENTS_DIR . 'utilisateursmanager/utilisateurs.interface.php');
-require_once(COMPONENTS_DIR . 'utilisateursmanager/utilisateurs.services.php');
+require_once(COMPONENTS_DIR . 'gestionutilisateurs/utilisateurs.interface.php');
+require_once(COMPONENTS_DIR . 'gestionutilisateurs/utilisateurs.services.php');
 
 require_once(CONTRACTS_DIR . 'utilisateur.entite.php');
 

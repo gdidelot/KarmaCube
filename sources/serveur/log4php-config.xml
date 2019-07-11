@@ -1,0 +1,19 @@
+<configuration xmlns="http://logging.apache.org/log4php/">
+
+	<appender name="logfile" class="LoggerAppenderDailyFile">
+        <layout class="LoggerLayoutPattern">
+            <param name="conversionPattern" value="%level %date{d-m-Y H:i:s,u} - [%logger] : %message%newline" />
+        </layout>
+        <param name="file" value="../Logs/log-%s.log" />
+        <param name="datePattern" value="Y-m-d" /> 
+    </appender>
+	
+    <appender name="logconsole" class="LoggerAppenderConsole" />
+	
+    <root>
+        <level value="DEBUG" />
+		<appender_ref ref="logfile" />
+		<appender_ref ref="logconsole" />
+    </root>
+	
+</configuration>
