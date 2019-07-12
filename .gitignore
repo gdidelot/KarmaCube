@@ -1,3 +1,4 @@
 /node_modules
 /sources/bower_components
 /sources/serveur/vendor
+/dist
