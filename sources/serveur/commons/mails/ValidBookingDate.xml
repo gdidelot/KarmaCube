@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<mail>
+	<subject>Réservation validée</subject>
+	<messagetext>
+		Bonjour #associationname, 
+		Nous avons le plaisir de vous informer que votre réservation est validée :
+		Il s'agit du créneau du #bookingdatedate sur #bookingplace pour #bookingdatedescription
+		Merci pour votre implication.
+		Cordialement
+		Malesherb'Unis
+	</messagetext>
+	<messagehtml>
+		<div>
+			<div style="background-color:#f2f2f2">
+			<table cellpadding="0" cellspacing="0" border="0" bgcolor="#f2f2f2" width="100%" class="x_fond">
+				<tbody>
+					<tr>
+						<td align="center">
+							<table cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" width="600" align="center" class="x_general">
+								<tbody>
+									<tr>
+										<td bgcolor="#FFFFFF" valign="top"><img data-imagetype="External" src="https://malesherbunis.fr/themes/default/pictures/header.png" alt="" border="0" style="display:block" /></td>
+									</tr>
+									<tr>
+									<td align="center">
+										<table cellpadding="0" cellspacing="0" border="0" width="480" class="x_content">
+											<tbody>
+												<tr>
+													<td height="20"> </td>
+												</tr>
+												<tr>
+													<td align="center"><font color="#353A5E" face="Arial, Helvetica, sans-serif" size="5" style="font-size:24px">Réservation validée</font> </td>
+												</tr>
+												<tr>
+													<td align="left"><br />
+													<font color="#737373" face="Arial, Helvetica, sans-serif" size="3" style="font-size:15px; line-height:20px">
+														<p></p>
+														<p>Bonjour #associationname,</p>
+														<p></p>
+														<p>Nous avons le plaisir de vous informer que votre réservation est validée :</p>
+														<p>Il s'agit du créneau du <b>#bookingdatedate</b> sur <b>#bookingplace</b> pour <b>#bookingdatedescription</b></p>
+														<p>Merci pour votre implication.</p>
+														<p></p>
+														<p>Cordialement</p>
+														<p>Malesherb'Unis</p>
+														<br />
+														<br />
+													</font>
+													</td>
+												</tr>
+												<tr>
+													<td height="50">   </td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+									</tr>
+									<tr>
+										<td bgcolor="#CEDBDE" valign="bottom"><img data-imagetype="External" src="https://malesherbunis.fr/themes/default/pictures/footer_mail.gif" alt="" border="0" style="display:block" /></td>
+									</tr>
+									<tr>
+										<td align="center" bgcolor="#f2f2f2">
+										<br />
+										<img data-imagetype="External" src="http://factory4net.fr/themes/default/images/logo.png" alt="Malt" border="0" /> <br />
+										<font color="#737373" face="Arial, Helvetica, sans-serif" size="1" style="font-size:11px; line-height:20px"><a href="#facebooklink" target="_blank" rel="noopener noreferrer" style="color:#737373; text-decoration:none">Facebook</a><br />
+										</font>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p width="1" border="0" style="background-color:#f2f2f2; color:#f2f2f2; margin-top:0">
+			kffj6c?t0sn944?vaxkayb7 9h!vscqgwu 4h2x3x04xoe1dh3va69zz!yoe </p>
+			<img data-imagetype="External" src="http://mandrillbounce.hopwork.com/track/open.php?u=7422897&amp;id=6f5ab370bf984328a8fbd9870796e8d4" height="1" width="1" /> </div>
+		</div>
+	</messagehtml>
+</mail>

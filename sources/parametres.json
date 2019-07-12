@@ -13,8 +13,8 @@
   ],
   "logger": "debug",
   "isDebug": 1,
-  "version": "0.0.0",
-  "lastupdate": "3/7/2019",
+  "version": "0.0.5",
+  "lastupdate": "12/7/2019",
   "defaultCulture": "fr-FR",
   "availableLanguages": [
     {

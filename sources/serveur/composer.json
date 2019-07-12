@@ -1,0 +1,11 @@
+{
+	"require": 
+	{
+		"apache/log4php": "2.3.0",
+		"doctrine/orm": "*",
+		"kbsali/redmine-api": "~1.0",
+		"phpoffice/phpexcel": "*",
+		"paypal/rest-api-sdk-php": "*",
+		"spipu/html2pdf": "~5.0"
+	}
+}
