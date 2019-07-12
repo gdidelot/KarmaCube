@@ -1,6 +1,6 @@
 <?php
 require_once('core.config.php');
-require_once('coreservice.class.php');
+require_once('services.class.php');
 
 
 $_SESSION['currentuser'] = (object) array('Id' => '1', 'Email' => 'gdidelot@live.fr');
@@ -17,7 +17,7 @@ class ProxyTester
 	public function __construct()
 	{
 		$this->Methods = array();
-		$this->Proxy = new Core\CoreService();
+		$this->Proxy = new Serveur\Services();
 	}
 	
 	public function DisplayCallMethod($methodName, $postInformations)
@@ -33,7 +33,7 @@ class ProxyTester
 			$counter++;
 		}
 
-		$class = new \ReflectionClass('Core\CoreService'); 
+		$class = new \ReflectionClass('Serveur\Services'); 
 		$objectInstance = $class->newInstanceArgs();
 		
 		if(method_exists($objectInstance , $methodName ) == false)
@@ -47,7 +47,7 @@ class ProxyTester
 	
 	public function DisplayTableTest()
 	{
-		$reflector = new ReflectionClass('Core\CoreService');
+		$reflector = new ReflectionClass('Serveur\Services');
 		$parameters = $reflector->getMethod($_GET["method"])->getParameters();
 		
 		$this->WriteLine("");

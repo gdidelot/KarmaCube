@@ -9,7 +9,9 @@
 */
 
 $components = array (
-    'utilisateurs'
+    'utilisateurs',
+    'quetes',
+	'cubes'
 );
 
 foreach ($components as $component) {

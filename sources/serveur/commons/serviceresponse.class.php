@@ -7,7 +7,7 @@
 * @package 
 * @subpackage 
 */
-namespace Core\CoreCommons;
+namespace Serveur\Communs;
 
 /**
 * The common service response

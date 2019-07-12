@@ -93,8 +93,6 @@ class ProxyGenerator
 		
 		foreach($components as $component)
 		{
-			echo $component . '\n';
-			
 			array_push($this->ComponentsName, ucwords($component));
 			
 			$path = COMPONENTS_DIR . 'Gestion' . $component;
@@ -155,8 +153,6 @@ class ProxyGenerator
 	
 		foreach($this->ComponentClasses as $class)
 		{
-			echo $class . '\n';
-			
 			$interface = class_implements($class);
 			$methods_implemented = get_class_methods(array_shift($interface));
 			$reflector = new ReflectionClass($class);
@@ -257,7 +253,7 @@ class ProxyGenerator
 			
 		foreach($filteredProxy as $proxyMethod)
 		{
-			$result .= sprintf('%s%s$this->%s = new Composants\\Gestion%\\%s(); %s', "\t", "\t", $proxyMethod->MethodInterface, $proxyMethod->Component, $proxyMethod->MethodComponent, "\n");
+			$result .= sprintf('%s%s$this->%s = new Composants\\Gestion%s\\%s(); %s', "\t", "\t", $proxyMethod->MethodInterface, $proxyMethod->Component, $proxyMethod->MethodComponent, "\n");
 		}	
 		
 		$result .= sprintf('%s%s%s', "\t", "}", "\n");

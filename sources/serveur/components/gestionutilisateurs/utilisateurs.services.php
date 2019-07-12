@@ -35,79 +35,58 @@ class Utilisateurs implements IUtilisateurs
 	*/
 	public function __construct()  
 	{
-		$bootstrap = Core\Datastorage\Bootstrap::getInstance();
+		$bootstrap = Serveur\Datastorage\Bootstrap::getInstance();
 		$this->entityManager = $bootstrap->getEntityManager();
-		$this->userRepository = $this->entityManager->getRepository('Core\CoreContracts\Utilisateur');
+		$this->userRepository = $this->entityManager->getRepository('Serveur\Entites\Utilisateur');
 	}
 	
 	/**
-	* Authenticate an user
-	* 
-	* @param string $mail The user's mail 
-	* @param string $password The user's password 
-	*
-	* @return Core\CoreCommons\ServiceResponse This response contains the user object
-	*/
-	public function authenticate($mail, $password)
+    * Authentification d'un utilisateur
+    *
+    * @param string $email Adresse mail de l'utilisateur
+    * @param string $motdepasse Mot de passe de l'utilisateur
+    *
+    * @return Serveur\Entites\Utilisateur L'utilisateur authentifié
+    */
+    public function authentification($email, $motdepasse)
 	{
-		Core\CoreCommons\Logger::Info("Users.authenticate : Start to authenticate");
+		Serveur\Communs\Logger::Info("Utilisateurs.authentification : Authentification d'un utilisateur");
 		
 		$response = null;
 		
 		try
 		{	
-			$user = $this->userRepository->findOneBy(array('Email' => $mail, 'Password' => sha1($password)));
+			$utilisateur = $this->userRepository->findOneBy(array('Email' => $email, 'MotDePasse' => sha1($motdepasse)));
 			
-			if(is_null($user) == true)
+			if(is_null($utilisateur) == true)
 			{
-				throw new \Exception("User_Unknown");
+				throw new \Exception("Utilisateur_Inconnu");
 			}
 			
-			if($user->State == Core\CoreContracts\StateUser::NotValid)
+			if($utilisateur->Etat == Serveur\Entites\UtilisateurEtat::Invalide)
 			{
-				throw new \Exception("User_Not_Valid");
+				throw new \Exception("Utilisateur_Invalide");
 			}
 			
-			if($user->State == Core\CoreContracts\StateUser::Banned)
+			if($utilisateur->Etat == Serveur\Entites\UtilisateurEtat::Banni)
 			{
-				throw new \Exception("User_Banned");
+				throw new \Exception("Utilisateur_Banni");
 			}
 			
-			$user->State = Core\CoreContracts\StateUser::Online;
-			$this->entityManager->merge($user);
+			$utilisateur->Etat = Serveur\Entites\UtilisateurEtat::EnLigne;
+			$this->entityManager->merge($utilisateur);
 			$this->entityManager->flush();
-			
-			if(isset($user->AvatarExtension) && is_null($user->AvatarExtension) ==  false)
-			{
-				$parameters = Core\CoreCommons\Parameters::Singleton();
-				$rootSite = $parameters::Get("rootsite");
-				$documentsrootpath = $parameters::Get("documentsrootpath");
-				$name = 'avatar.' . $user->AvatarExtension;
 				
-				$webShareUrl = sprintf("%s/%s/%s/%s", $rootSite, $documentsrootpath, $user->Email, $name);
-				$user->Avatar = $webShareUrl;
-			} 
-			else 
-			{
-				$parameters = Core\CoreCommons\Parameters::Singleton();
-				$rootSite = $parameters::Get("rootsite");
-				$documentsrootpath = $parameters::Get("documentsrootpath");
-				$name = 'avatar.png';
-				
-				$webShareUrl = sprintf("%s/%s/%s", $rootSite, $documentsrootpath, $name);
-				$user->Avatar = $webShareUrl;
-			}
-				
-			$response = new Core\CoreCommons\ServiceResponse($user);
+			$response = new Serveur\Communs\ServiceResponse($utilisateur);
 			
-			//Save the user on a session
-			$_SESSION["_" . $user->Id] = $user;
+			// Créer une session utilisateur
+			$_SESSION["_" . $utilisateur->Id] = $utilisateur;
 			
-			Core\CoreCommons\Logger::Info("Users.authenticate : authentification is finished");
+			Serveur\Communs\Logger::Info("Utilisateurs.authentification : Authentification terminée");
 		}
 		catch (\Exception $ex) 
 		{
-			$response = Core\CoreCommons\ServiceResponse::CreateError($ex);
+			$response = Serveur\Communs\ServiceResponse::CreateError($ex);
 		}
 		
 		return $response;

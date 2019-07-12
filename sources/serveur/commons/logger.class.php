@@ -7,7 +7,7 @@
 * @package Core\CoreCommons
 * @subpackage CoreCommons
 */
-namespace Core\CoreCommons;
+namespace Serveur\Communs;
 
 /**
 * Logger class definition. This class manage application logs.

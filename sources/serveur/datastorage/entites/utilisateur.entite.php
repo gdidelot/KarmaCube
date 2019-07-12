@@ -2,19 +2,86 @@
 
 namespace Serveur\Entites;
 
+/**
+* Classe définissant un utilisateur
+*
+* @method Serveur\Entites\Utilisateur __construct($nom, $prenom, $nationalite, $motdepasse, $karma, $email)
+*
+* @Entity @Table(name="t_utilisateurs")
+*/
 class Utilisateur extends Entite
 {
-    protected $Nom;
-
-    protected $Prenom;
-
-    protected $Nationalite;
+	/**
+    * Nom de l'utilisateur
+    * @var string
+    * @Column(type="string")
+    */
+    public $Nom;
+	
+	/**
+    * Prénom de l'utilisateur
+    * @var string
+    * @Column(type="string")
+    */
+    public $Prenom;
+	
+	/**
+    * Etat de l'utilisateur
+    * @var string
+    * @Column(type="integer")
+    */
+    public $Etat;
+	
+	/**
+    * Nationalité de l'utilisateur
+    * @var string
+    * @Column(type="string")
+    */
+    public $Nationalite;
     
-    protected $MotDePasse;
-
-    protected $Karma;
-
-    protected $Mail;
-
-    protected $Argents;
+	/**
+    * Mot de passe de l'utilisateur
+    * @var string
+    * @Column(type="string")
+    */
+    public $MotDePasse;
+	
+	/**
+    * Le karma de l'utilisateur
+    * @var Serveur\Entites\Karma
+    * @ManyToOne(targetEntity="Serveur\Entites\Karma", fetch="EAGER", cascade="persist")
+    * @JoinColumn(name="Karma", referencedColumnName="Id")
+    */
+    public $Karma;
+	
+	/**
+    * Adresse mail de l'utilisateur
+    * @var string
+    * @Column(type="string")
+    */
+    public $Email;
+	
+	/**
+    * Argents l'utilisateur
+    * @var string
+    * @Column(type="integer")
+    */
+    public $Argents;
+	
+	/**
+    * Construire un nouvel utilisateur
+    */
+    public function __construct($nom, $prenom, $nationalite, $motdepasse, $karma, $email)
+    {
+        $this->Nom = $nom;
+        $this->Prenom = $prenom;
+        $this->Etat = Serveur\Entites\UtilisateurEtat::Inconnu;
+        $this->Nationalite = $nationalite;
+        $this->MotDePasse = $motdepasse;
+        $this->Karma = $karma;
+        $this->Email = $mail;
+        $this->Argents = 0;
+        $this->DateDeModification = new \DateTime();
+        $this->DateDeCreation = new \DateTime();
+    }
 }  

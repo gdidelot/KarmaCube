@@ -7,7 +7,7 @@
 * @package Core\CoreComponents
 * @subpackage TasksManager
 */
-namespace Core\Datastorage;
+namespace Serveur\Datastorage;
 
 require_once (__dir__ . '/../vendor/autoload.php');
  
@@ -39,7 +39,7 @@ class Bootstrap
 	*/
 	private function __construct()  
 	{  
-		$parameters = \Core\CoreCommons\Parameters::Singleton();
+		$parameters = \Serveur\Communs\Parameters::Singleton();
 		//$isDebug = $parameters::Get("isDebug");
 		$database = $parameters::Get("database");
 		

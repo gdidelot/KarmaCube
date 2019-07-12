@@ -12,19 +12,19 @@ namespace Serveur\Composants\GestionUtilisateurs;
 /**
 * This interface provide all accessible methods on users module
 *
-* @method ServiceResponse authenticate($mail, $password)
+* @method ServiceResponse authentification($email, $motdepasse);
 */
 interface IUtilisateurs
 {
     /**
-    * Authenticate an user
+    * Authentification d'un utilisateur
     *
-    * @param string $mail The user's mail
-    * @param string $password The user's password
+    * @param string $email Adresse mail de l'utilisateur
+    * @param string $motdepasse Mot de passe de l'utilisateur
     *
-    * @return This response contains the use object
+    * @return Serveur\Entites\Utilisateur L'utilisateur authentifié
     */
-    public function authenticate($mail, $password);
+    public function authentification($email, $motdepasse);
    
 }
 

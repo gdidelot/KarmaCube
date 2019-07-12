@@ -28,12 +28,12 @@ if (defined('DATASTORAGE_DIR') == false) {
 /**
 * The prefix of the salt
 */
-define('PREFIX_SALT', 'Malesherbunis');
+define('PREFIX_SALT', 'KarmaCube');
 
 /**
 * The suffix of the salt
 */
-define('SUFFIX_SALT', 'Salt_2018');
+define('SUFFIX_SALT', 'Salt_2019');
 
 //Commons references
 require_once(COMMONS_DIR . 'parameters.class.php');
@@ -56,7 +56,7 @@ if (class_exists('Logger')) {
 require_once(DATASTORAGE_DIR . 'bootstrap.php');
 
 //Services facade reference
-require_once(CORE_DIR . 'coreservice.class.php');
+require_once(CORE_DIR . 'services.class.php');
 
 //Load the components configuration
 require_once(CORE_DIR . 'components.config.php');

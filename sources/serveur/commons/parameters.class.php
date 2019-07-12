@@ -7,7 +7,7 @@
 * @package Core
 * @subpackage CoreCommons
  */
-namespace Core\CoreCommons;
+namespace Serveur\Communs;
 
 /**
 * Parameters class definition. This class manage the configuration of the application.
@@ -52,7 +52,7 @@ class Parameters
 	private function __construct() 
 	{
 		self::$Keys = array();
-		$file = CORE_DIR . "/../parameters.json";
+		$file = CORE_DIR . "/../parametres.json";
 		$str = file_get_contents($file);
 		$json = json_decode($str); 
 		self::$Keys = $json;
@@ -69,7 +69,7 @@ class Parameters
 		$dh  = opendir($directory);
 		while (false !== ($filename = readdir($dh))) 
 		{
-			if(self::StartWith($filename, "parameters"))
+			if(self::StartWith($filename, "parametres"))
 			{
 				$path_parts = pathinfo($filename);
 				if($path_parts['extension'] == 'json')
@@ -122,7 +122,7 @@ class Parameters
 	{
 		$directory = CORE_DIR . "/../app/";
 		$file = $directory . $filename;
-		$newFile =  $directory . "parameters.json";
+		$newFile =  $directory . "parametres.json";
 		return copy($file, $newFile);
 	}
 
