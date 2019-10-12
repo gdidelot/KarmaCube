@@ -47,7 +47,7 @@
     "jshint": "^2.9.1",
     "jshint-jenkins-checkstyle-reporter": "^0.1.2",
     "jshint-stylish": "^2.1.0",
-    "open": "0.0.5",
+    "open": "6.0.0",
     "phantomjs": "^2.1.3",
     "rsyncwrapper": "^1.0.0",
     "run-sequence": "^1.1.5",
