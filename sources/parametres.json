@@ -34,5 +34,6 @@
   "documentsrootpath": "Documents",
   "tempurl": "http://localhost/personnel/projets_associatifs/Ecole%20des%20Geeks/IntraGeeks/src/core/components/documentsmanager/temp/",
   "rootsite": "http://localhost/personnel/projets_associatifs/Ecole%20des%20Geeks/IntraGeeks/src/",
-  "servicebase": "http://localhost/personnel/projets_associatifs/Ecole%20des%20Geeks/IntraGeeks/src/core/server.class.php"
+  "servicebase": "http://localhost/personnel/projets_associatifs/Ecole%20des%20Geeks/IntraGeeks/src/core/server.class.php",
+  "avancer": "flechehaut"
 }

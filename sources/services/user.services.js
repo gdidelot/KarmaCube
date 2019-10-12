@@ -6,6 +6,7 @@
 		var $q = $injector.get('$q');
 		var requestservices = $injector.get('requestservices');
 		return {
+			/*
 			obtenirUtilisateurs: function(callback) {
 				console.log('userservices - get all profiles');
 				var canceller = $q.defer();
@@ -22,17 +23,8 @@
 				requestPromise.finally(function() {
 					requestservices.remove(url);			
 				});
-			},
+			}
 			
-				});
-				requestPromise.error(function(data, status) {
-					console.error("getUsers - call failed"); 	
-					throw status + ' : ' + data;		
-				});
-				requestPromise.finally(function() {
-					requestservices.remove(url);			
-				});
-			},
 			tuerouaider: function(callback) {
 				console.log('userservices - get all users');
 				var canceller = $q.defer();
@@ -84,7 +76,7 @@
 					requestservices.remove(url);			
 				});
 			},
-			finaliserunequete: function(callback) {
+		finaliserunequete: function(callback) {
 				console.log('userservices - get all users');
 				var canceller = $q.defer();
 				requestservices.add({ url: app.servicebase, canceller: canceller });
@@ -117,78 +109,76 @@
 			requestPromise.finally(function() {
 				requestservices.remove(url);			
 			});
-	};
-	deplacementdanslesvillage: function(callback) {
-		console.log('userservices - get all users');
-		var canceller = $q.defer();
-		requestservices.add({ url: app.servicebase, canceller: canceller });
-		var requestPromise = $http.post(app.servicebase, { "context" : { "service" : "deplacementdanslesvillage", "user" : $rootScope.currentuser } }, { timeout: canceller.promise });
-		requestPromise.success(function(data, status) {
-			console.info("getUsers - call success"); 
-			callback(data);
-		});
-		requestPromise.error(function(data, status) {
-			console.error("getUsers - call failed"); 	
-			throw status + ' : ' + data;		
-		});
-		requestPromise.finally(function() {
-			requestservices.remove(url);			
-		});
-};
-ameliorationdukarma: function(callback) {
-	console.log('userservices - get all users');
-	var canceller = $q.defer();
-	requestservices.add({ url: app.servicebase, canceller: canceller });
-	var requestPromise = $http.post(app.servicebase, { "context" : { "service" : "ameliorationdukarma", "user" : $rootScope.currentuser } }, { timeout: canceller.promise });
-	requestPromise.success(function(data, status) {
-		console.info("getUsers - call success"); 
-		callback(data);
-	});
-	requestPromise.error(function(data, status) {
-		console.error("getUsers - call failed"); 	
-		throw status + ' : ' + data;		
-	});
-	requestPromise.finally(function() {
-		requestservices.remove(url);			
-	});
-	
-	});
-};
-combattredesboss: function(callback) {
-	console.log('userservices - get all users');
-	var canceller = $q.defer();
-	requestservices.add({ url: app.servicebase, canceller: canceller });
-	var requestPromise = $http.post(app.servicebase, { "context" : { "service" : "combattredesboss", "user" : $rootScope.currentuser } }, { timeout: canceller.promise });
-	requestPromise.success(function(data, status) {
-		console.info("getUsers - call success"); 
-		callback(data);
-	});
-	requestPromise.error(function(data, status) {
-		console.error("getUsers - call failed"); 	
-		throw status + ' : ' + data;		
-	});
-	requestPromise.finally(function() {
-		requestservices.remove(url);			
-	});
-	
-	});
-	},
-	combattredesboss: function(callback) {
-		console.log('userservices - get all users');
-		var canceller = $q.defer();
-		requestservices.add({ url: app.servicebase, canceller: canceller });
-		var requestPromise = $http.post(app.servicebase, { "context" : { "service" : "combattredesboss", "user" : $rootScope.currentuser } }, { timeout: canceller.promise });
-		requestPromise.success(function(data, status) {
-			console.info("getUsers - call success"); 
-			callback(data);
-		});
-		requestPromise.error(function(data, status) {
-			console.error("getUsers - call failed"); 	
-			throw status + ' : ' + data;		
-		});
-		requestPromise.finally(function() {
-			requestservices.remove(url);			
-		});
+		};
+		deplacementdanslesvillage: function(callback) {
+			console.log('userservices - get all users');
+			var canceller = $q.defer();
+			requestservices.add({ url: app.servicebase, canceller: canceller });
+			var requestPromise = $http.post(app.servicebase, { "context" : { "service" : "deplacementdanslesvillage", "user" : $rootScope.currentuser } }, { timeout: canceller.promise });
+			requestPromise.success(function(data, status) {
+				console.info("getUsers - call success"); 
+				callback(data);
+			});
+			requestPromise.error(function(data, status) {
+				console.error("getUsers - call failed"); 	
+				throw status + ' : ' + data;		
+			});
+			requestPromise.finally(function() {
+				requestservices.remove(url);			
+			});
+		},
+		ameliorationdukarma: function(callback) {
+			console.log('userservices - get all users');
+			var canceller = $q.defer();
+			requestservices.add({ url: app.servicebase, canceller: canceller });
+			var requestPromise = $http.post(app.servicebase, { "context" : { "service" : "ameliorationdukarma", "user" : $rootScope.currentuser } }, { timeout: canceller.promise });
+			requestPromise.success(function(data, status) {
+				console.info("getUsers - call success"); 
+				callback(data);
+			});
+			requestPromise.error(function(data, status) {
+				console.error("getUsers - call failed"); 	
+				throw status + ' : ' + data;		
+			});
+			requestPromise.finally(function() {
+				requestservices.remove(url);			
+			});
+		},
+		combattredesboss: function(callback) {
+			console.log('userservices - get all users');
+			var canceller = $q.defer();
+			requestservices.add({ url: app.servicebase, canceller: canceller });
+			var requestPromise = $http.post(app.servicebase, { "context" : { "service" : "combattredesboss", "user" : $rootScope.currentuser } }, { timeout: canceller.promise });
+			requestPromise.success(function(data, status) {
+				console.info("getUsers - call success"); 
+				callback(data);
+			});
+			requestPromise.error(function(data, status) {
+				console.error("getUsers - call failed"); 	
+				throw status + ' : ' + data;		
+			});
+			requestPromise.finally(function() {
+				requestservices.remove(url);			
+			});
+		
+		},
+		combattredesboss: function(callback) {
+			console.log('userservices - get all users');
+			var canceller = $q.defer();
+			requestservices.add({ url: app.servicebase, canceller: canceller });
+			var requestPromise = $http.post(app.servicebase, { "context" : { "service" : "combattredesboss", "user" : $rootScope.currentuser } }, { timeout: canceller.promise });
+			requestPromise.success(function(data, status) {
+				console.info("getUsers - call success"); 
+				callback(data);
+			});
+			requestPromise.error(function(data, status) {
+				console.error("getUsers - call failed"); 	
+				throw status + ' : ' + data;		
+			});
+			requestPromise.finally(function() {
+				requestservices.remove(url);			
+			});
+		},
 		rechercherdesobjetspourcontinuer: function(callback) {
 			console.log('userservices - get all users');
 			var canceller = $q.defer();
@@ -205,7 +195,7 @@ combattredesboss: function(callback) {
 			requestPromise.finally(function() {
 				requestservices.remove(url);			
 			});
-		});
+		},
 		baissedukarma: function(callback) {
 			console.log('userservices - get all users');
 			var canceller = $q.defer();
@@ -222,8 +212,8 @@ combattredesboss: function(callback) {
 			requestPromise.finally(function() {
 				requestservices.remove(url);			
 			});
-		});
 		},
-	*
+		*/
+		}
 	}]);
 })(window.angular);
