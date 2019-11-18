@@ -16,7 +16,8 @@ require_once('core.config.php');
 $service = new Services();
 
 try {
-    if (isset($_GET["validemail"])) {
+    if (isset($_GET["validemail"])) 
+	{
         $token = $_GET["validemail"];
         if (isset($token)) 
 		{
@@ -24,24 +25,9 @@ try {
             header('Location: https://malesherbunis.fr/');
             exit;
         }
-	} elseif (isset($_GET["success"]) && isset($_GET["paymentId"]) && isset($_GET["token"]) && isset($_GET["PayerID"])) {
-		$success = $_GET["success"];
-		$paymentId = $_GET["paymentId"];
-		$token = $_GET["token"];
-		$payerID = $_GET["PayerID"];
-	   
-		$result = $service->validPaypalPayment($success, $paymentId, $token, $payerID);
-		if($result->isFailed == true)
-		{
-			header('Location: https://malesherbunis.fr/?failed=1');
-		}
-		else
-		{
-			header('Location: https://malesherbunis.fr/?success=1');
-		}
-        exit;
-	   
-    } else {
+    } 
+	else 
+	{
         if (!empty($_FILES)) {
             try {
                 Communs\Logger::Debug("Server : Files detected");
@@ -101,12 +87,12 @@ try {
 			}
 			
 			//Get all method parameters and set all provided parameters
-			$method = new \ReflectionMethod('Core\CoreService', $service);
+			$method = new \ReflectionMethod('Serveur\Services', $service);
 			$params = $method->getParameters();
 			
 			Communs\Logger::Debug("Server call $service");
 			
-			$class = new \ReflectionClass('Core\CoreService'); 
+			$class = new \ReflectionClass('Serveur\Services'); 
 			$objectInstance = $class->newInstanceArgs();
 			
 			if(method_exists($objectInstance , $service ) == false)

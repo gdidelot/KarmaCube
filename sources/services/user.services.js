@@ -10,7 +10,7 @@
 				console.log('userservices - start to authenticate');
 				var canceller = $q.defer();
 				requestservices.add({ url: app.servicebase, canceller: canceller });
-				var requestPromise = $http.post(app.servicebase, { "context" : { "service" : "authenticate", "user" : $rootScope.currentuser }, "email" : email, "motdepasse" : motdepasse }, { timeout: canceller.promise });
+				var requestPromise = $http.post(app.servicebase, { "context" : { "service" : "authentification", "user" : $rootScope.currentuser }, "email" : email, "motdepasse" : motdepasse }, { timeout: canceller.promise });
 				requestPromise.success(function(data, status) {
 					console.info("authenticate - call success"); 
 					callback(data);

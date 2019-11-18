@@ -43,10 +43,10 @@ app.controller('logincontroleur', ["$injector", "$scope", function($injector, $s
 				$rootScope.currentuser = data.response;
 				localStorage.removeItem('currentuser');
 				localStorage.setItem('currentuser', JSON.stringify($rootScope.currentuser));
-				$rootScope.changeLocation('home');
+				$rootScope.changeLocation('game');
 			}
 			$rootScope.authenticating = false;
-		}, login.identifier, login.password);
+		}, login.Identifiant, login.MotDePasse);
 	};
 	
 	$scope.resetPasswordCommand = function(email){
