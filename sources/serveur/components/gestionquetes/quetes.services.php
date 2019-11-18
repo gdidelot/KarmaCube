@@ -91,8 +91,8 @@ class Quetes implements IQuetes
 	}
 	
 	public function ajouterQuete($quete)
-	
-	{Serveur\Communs\Logger::Info("Quetes.obtenirQuetes : Retourner ajouter quete");
+	{
+		Serveur\Communs\Logger::Info("Quetes.obtenirQuetes : Retourner ajouter quete");
 		
 		$response = null;
 		
@@ -106,12 +106,13 @@ class Quetes implements IQuetes
 		}
 		catch (\Exception $ex) 
 		{
-			$response = Serveur\Communs\ServiceResponse::CreateError($ex)
+			$response = Serveur\Communs\ServiceResponse::CreateError($ex);
+		}
 	}
 	
 	public function modifierQuete($quete)
-
-	{Serveur\Communs\Logger::Info("Quetes.obtenirQuetes : Retourner modifier quete");
+	{
+		Serveur\Communs\Logger::Info("Quetes.obtenirQuetes : Retourner modifier quete");
 		
 		$response = null;
 		
@@ -125,12 +126,13 @@ class Quetes implements IQuetes
 		}
 		catch (\Exception $ex) 
 		{
-			$response = Serveur\Communs\ServiceResponse::CreateError($ex)
+			$response = Serveur\Communs\ServiceResponse::CreateError($ex);
+		}
 	}
 	
 	public function supprimerQuete($quete)
-
-	{Serveur\Communs\Logger::Info("Quetes.obtenirQuetes : Retourner supprimer quete");
+	{
+		Serveur\Communs\Logger::Info("Quetes.obtenirQuetes : Retourner supprimer quete");
 		
 		$response = null;
 		
@@ -144,12 +146,13 @@ class Quetes implements IQuetes
 		}
 		catch (\Exception $ex) 
 		{
-			$response = Serveur\Communs\ServiceResponse::CreateError($ex)
+			$response = Serveur\Communs\ServiceResponse::CreateError($ex);
+		}
 	}
 	
 	public function obtenirEtapes($quete)
-	
-	{Serveur\Communs\Logger::Info("Quetes.obtenirEtapes : Retourner obtenir etapes");
+	{
+		Serveur\Communs\Logger::Info("Quetes.obtenirEtapes : Retourner obtenir etapes");
 		
 		$response = null;
 		
@@ -163,12 +166,13 @@ class Quetes implements IQuetes
 		}
 		catch (\Exception $ex) 
 		{
-			$response = Serveur\Communs\ServiceResponse::CreateError($ex)
+			$response = Serveur\Communs\ServiceResponse::CreateError($ex);
+		}
 	}
 	
 	public function ajouterEtape($etapeQuete)
-
-	{Serveur\Communs\Logger::Info("Quetes.obtenirEtapes : Retourner ajouter etapes");
+	{
+		Serveur\Communs\Logger::Info("Quetes.obtenirEtapes : Retourner ajouter etapes");
 		
 		$response = null;
 		
@@ -182,7 +186,8 @@ class Quetes implements IQuetes
 		}
 		catch (\Exception $ex) 
 		{
-			$response = Serveur\Communs\ServiceResponse::CreateError($ex)
+			$response = Serveur\Communs\ServiceResponse::CreateError($ex);
+		}
 	}
 	
 	public function modifierEtape($etapeQuete)
@@ -201,7 +206,8 @@ class Quetes implements IQuetes
 		}
 		catch (\Exception $ex) 
 		{
-			$response = Serveur\Communs\ServiceResponse::CreateError($ex)
+			$response = Serveur\Communs\ServiceResponse::CreateError($ex);
+		}
 	}
 	
 	public function supprimerEtape($etapeQuete)
@@ -220,7 +226,8 @@ class Quetes implements IQuetes
 		}
 		catch (\Exception $ex) 
 		{
-			$response = Serveur\Communs\ServiceResponse::CreateError($ex)
+			$response = Serveur\Communs\ServiceResponse::CreateError($ex);
+		}
 	}
 	
 }

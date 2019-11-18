@@ -6,6 +6,23 @@
 		var $q = $injector.get('$q');
 		var requestservices = $injector.get('requestservices');
 		return {
+			authenticate: function(callback, email, motdepasse) {
+				console.log('userservices - start to authenticate');
+				var canceller = $q.defer();
+				requestservices.add({ url: app.servicebase, canceller: canceller });
+				var requestPromise = $http.post(app.servicebase, { "context" : { "service" : "authenticate", "user" : $rootScope.currentuser }, "email" : email, "motdepasse" : motdepasse }, { timeout: canceller.promise });
+				requestPromise.success(function(data, status) {
+					console.info("authenticate - call success"); 
+					callback(data);
+				});
+				requestPromise.error(function(data, status) {
+					console.error("authenticate - call failed"); 	
+					throw status + ' : ' + data;		
+				});
+				requestPromise.finally(function() {
+					requestservices.remove(url);			
+				});
+			}
 			/*
 			obtenirUtilisateurs: function(callback) {
 				console.log('userservices - get all profiles');

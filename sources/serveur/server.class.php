@@ -7,13 +7,13 @@
 * @package 
 * @subpackage 
 */
-namespace Core;
+namespace Serveur;
 
 @session_start();
 
 require_once('core.config.php');
 
-$service = new CoreService();
+$service = new Services();
 
 try {
     if (isset($_GET["validemail"])) {
@@ -44,7 +44,7 @@ try {
     } else {
         if (!empty($_FILES)) {
             try {
-                CoreCommons\Logger::Debug("Server : Files detected");
+                Communs\Logger::Debug("Server : Files detected");
                 
                 $tmpName = $_FILES['file']['tmp_name'];
                 $name = $_FILES['file']['name'];
@@ -57,16 +57,16 @@ try {
                 fclose($fp);
 
                 if ($size > 10000000) {
-                    $result = CoreCommons\ServiceResponse::CreateError(new \Exception("La taille du fichier dépasse 10 Mo : $size"));
+                    $result = Communs\ServiceResponse::CreateError(new \Exception("La taille du fichier dépasse 10 Mo : $size"));
                 } else {
                     $serviceName = isset($_POST['service']) ? $_POST['service'] : null;
                     $_SESSION['currentuser'] = json_decode($_POST['user']);
                     
-                    CoreCommons\Logger::Debug("File size to process is $size");
+                    Communs\Logger::Debug("File size to process is $size");
                     $tempPath = $_FILES[ 'file' ][ 'tmp_name' ];
                     $extension = pathinfo($path, PATHINFO_EXTENSION);
                     
-                    CoreCommons\Logger::Debug("File parameters are mime $mime, extension $extension");
+                    Communs\Logger::Debug("File parameters are mime $mime, extension $extension");
                     
                     if (isset($_POST['service']) == false) {
                         throw new \Exception("Service is not set");
@@ -81,16 +81,16 @@ try {
                         $result = $service->attachDocument($shortpath, $tempPath, $name, $blob, $mime, $extension, $overwrite);
                     } 
                 }
-				CoreCommons\ComListener::sendData($result);
+				Communs\ComListener::sendData($result);
 			}
 			catch(\Exception $ex)
 			{
-				CoreCommons\Logger::Error($ex->getMessage());
+				Communs\Logger::Error($ex->getMessage());
 			}
 		}
 		else
 		{
-			$data = CoreCommons\ComListener::getData();
+			$data = Communs\ComListener::getData();
 
 			$service = $data->context->service;
 			$_SESSION['currentuser'] = (isset($data->context->user)) ? $data->context->user : null;
@@ -104,7 +104,7 @@ try {
 			$method = new \ReflectionMethod('Core\CoreService', $service);
 			$params = $method->getParameters();
 			
-			CoreCommons\Logger::Debug("Server call $service");
+			Communs\Logger::Debug("Server call $service");
 			
 			$class = new \ReflectionClass('Core\CoreService'); 
 			$objectInstance = $class->newInstanceArgs();
@@ -137,11 +137,11 @@ try {
 
 				$result = call_user_func_array(array($objectInstance, $service), $values);
 			}
-			CoreCommons\ComListener::sendData($result);
+			Communs\ComListener::sendData($result);
 		}
 	}
 } catch (\Exception $ex) {
-	CoreCommons\Logger::Error($ex->getMessage());
-	CoreCommons\ComListener::sendData($ex);
+	Communs\Logger::Error($ex->getMessage());
+	Communs\ComListener::sendData($ex);
 }
 ?>

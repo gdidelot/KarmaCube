@@ -22,11 +22,14 @@
 	</div>
 </nav>
 
-<section>
-	<p><font color="red">Les Nouveautés</font></p>
-	<ul>
-		<li>Un autre jeu</li>
-		<li>Une nouvelle arme</li>
-		<li>Nouveaux pack de skin standart et Pikmin 3</li>
-	</ul>
-</section>
+<div class="row">
+	<div class="col-md-4 col-md-offset-8">
+		<section class="nouveautes">
+			<p>Les Nouveautés</p>
+			<ul>
+				<li ng-repeat="nouveaute in nouveautes">{{ nouveaute.texte }}</li>
+			</ul>
+		</section>
+	</div>
+</div>
+

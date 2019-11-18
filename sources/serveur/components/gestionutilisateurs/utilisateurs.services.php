@@ -56,7 +56,7 @@ class Utilisateurs implements IUtilisateurs
 		
 		try
 		{	
-			$utilisateur = $this->userRepository->findOneBy(array('Email' => $email, 'MotDePasse' => sha1($motdepasse)));
+			$utilisateur = $this->userRepository->findOneBy(array('Email' => $email, 'MotDePasse' => hash('sha256', $motdepasse)));
 			
 			if(is_null($utilisateur) == true)
 			{

@@ -7,9 +7,9 @@
 * @package Core
 * @subpackage CoreContracts
 */
-namespace Core\CoreCommons;
+namespace Serveur\Communs;
 
-use Core;
+use Serveur;
 
 /**
 * Communication listener about provided parameters from javascript and send result to javascript
@@ -50,7 +50,7 @@ class ComListener
             echo $output;
             flush();
         } catch (\Exception $ex) {
-            Core\CoreCommons\Logger::Error("ComListener.SendData : failed " . $ex->getMessage());
+            Serveur\Communs\Logger::Error("ComListener.SendData : failed " . $ex->getMessage());
         }
     }
 }

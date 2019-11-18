@@ -40,7 +40,7 @@ var app = angular.module('karmacube', ['ngRoute', 'gettext', 'ngResource', 'uiSw
 			url: 'parametres.json',
 			dataType: 'json',
 			success: function (response) {
-				console.log('app.mainInfo : cconfiguration file loaded');
+				console.log('app.mainInfo : configuration file loaded');
 				$rootScope.version = response.version;
 				$rootScope.config = response;
 				app.servicebase = response.servicebase;
@@ -60,6 +60,21 @@ var app = angular.module('karmacube', ['ngRoute', 'gettext', 'ngResource', 'uiSw
 				}
 				moment.locale($rootScope.defaultCulture.split('-')[0]);
 				$rootScope.$broadcast('configurationLoaded');
+			},
+			error: function(error){
+				console.log(error);
+			},
+			data: {},
+			async: false
+		});
+		
+		$.ajax({
+			type: 'GET',
+			url: 'nouveautes.json',
+			dataType: 'json',
+			success: function (response) {
+				console.log('app.mainInfo : fichier des nouveautés chargé');
+				$rootScope.nouveautes = response;
 			},
 			error: function(error){
 				console.log(error);
