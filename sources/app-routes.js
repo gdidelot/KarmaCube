@@ -20,6 +20,11 @@
 			templateUrl: 'composants/login.view.html',
 			controller: 'logincontroleur'
 		}).
+		when('/game', 
+		{
+			templateUrl: 'composants/game.view.html',
+			controller: 'gamecontroleur'
+		}).
 		otherwise({
 			redirectTo: '/'
 		});
