@@ -1,39 +1,4 @@
-{
-  "database": {
-    "host": "127.0.0.1",
-    "login": "root",
-    "password": "",
-    "databasename": "karmacube",
-    "port": 3310
-  },
-  "defaultTheme": "default",
-  "themes": [
-    "default",
-    "noflat"
-  ],
-  "logger": "debug",
-  "isDebug": 1,
-  "version": "0.0.5",
-  "lastupdate": "12/7/2019",
-  "defaultCulture": "fr-FR",
-  "availableLanguages": [
-    {
-      "name": "Français",
-      "tag": "fr-FR"
-    },
-    {
-      "name": "English",
-      "tag": "en-GB"
-    }
-  ],
-  "severmailaddress": "mail.ecoledesgeeks.fr",
-  "mailaddress": "contact@ecoledesgeeks.fr",
-  "mailpassword": "23%0pudM",
-  "phonenumber": "06.48.30.54.22",
-  "rootpath": "D:/personnel/projets_associatifs/Ecole des Geeks/IntraGeeks/src/",
-  "documentsrootpath": "Documents",
-  "tempurl": "http://localhost/personnel/projets_associatifs/Ecole%20des%20Geeks/IntraGeeks/src/core/components/documentsmanager/temp/",
-  "rootsite": "http://localhost/personnel/projets_associatifs/Ecole%20des%20Geeks/IntraGeeks/src/",
-  "servicebase": "http://localhost/personnel/projets_associatifs/Ecole%20des%20Geeks/IntraGeeks/src/core/server.class.php",
-  "avancer": "flechehaut"
-}
+[
+	{ "texte": "Nouveaux skins" },
+	{ "texte": "Nouvelles armes " }
+]
