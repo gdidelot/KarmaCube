@@ -297,9 +297,15 @@ app.controller('gamecontroleur', ["$injector", "$scope", "$location", function($
     */
     var initializeController = function () {
 		console.log('gamecontroleur.initializeController : Initialize the home controller.');
+
+        if (angular.isDefined($rootScope.currentuser) && $rootScope.currentuser !== null) {
+            initialisationScene();
+            animate();
+        } else {
+            $rootScope.changeLocation('login');
+        }
+
 		
-		initialisationScene();
-		animate();
 	};
 	
 	//#endregion Private functions
