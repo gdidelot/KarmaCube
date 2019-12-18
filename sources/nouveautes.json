@@ -1,4 +1,9 @@
 [
+<<<<<<< HEAD
 	{ "texte": "Nouveaux skins" },
 	{ "texte": "Nouvelles armes " }
+=======
+ {"texte":"titi"},
+ {"texte":"toto"}
+>>>>>>> d480419abd64f89e444ca34d2256bae4b294760a
 ]
