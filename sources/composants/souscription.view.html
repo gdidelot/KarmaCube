@@ -1,0 +1,22 @@
+<section>
+	<div class="row form-group">
+		<div class="col-md-4">
+			<label>Identifiant</label>
+		</div>
+		<div class="col-md-8">
+			<input class="form-control" type="text" ng-model="login.Identifiant" maxlength="30"/>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-4">
+			<button class="btn btn-default" ng-click="changeLocation('accueil')">Annuler</button>
+		</div>
+		<div class="col-md-4">
+			<button class="btn btn-warning" ng-click="changeLocation('/resetMotdePasse')">Mot de passe oublié</button>
+		</div>
+		<div class="col-md-4">
+			<button class="btn btn-success" ng-click="authenticateCommand(login)">Valider</button>
+		</div>
+	</div>
+</section>

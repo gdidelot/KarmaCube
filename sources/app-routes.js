@@ -15,10 +15,16 @@
 			templateUrl: 'composants/accueil.view.html',
 			controller: 'accueilcontroller'
 		}).
+		
 		when('/login', 
 		{
 			templateUrl: 'composants/login.view.html',
 			controller: 'logincontroleur'
+		}).
+		when('/souscription', 
+		{
+			templateUrl: 'composants/souscription.view.html',
+			controller: 'souscriptioncontroleur'
 		}).
 		when('/game', 
 		{

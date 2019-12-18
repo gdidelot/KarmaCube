@@ -1,7 +1,8 @@
 <?php
 /**
 * This interface provide all accessible methods on users module
-*
+*eric didelot
+
 * @author Didelot Guillaume <gdidelot@live.fr>
 * @version 1.0
 * @package Core\CoreComponents
@@ -39,6 +40,8 @@ class Utilisateurs implements IUtilisateurs
 		$this->entityManager = $bootstrap->getEntityManager();
 		$this->userRepository = $this->entityManager->getRepository('Serveur\Entites\Utilisateur');
 	}
+	*
+	
 	
 	/**
     * Authentification d'un utilisateur
@@ -85,6 +88,45 @@ class Utilisateurs implements IUtilisateurs
 			Serveur\Communs\Logger::Info("Utilisateurs.authentification : Authentification terminée");
 		}
 		catch (\Exception $ex) 
+		{
+			$response = Serveur\Communs\ServiceResponse::CreateError($ex);
+		}
+		
+		return $response;
+	}
+	
+	public function inscription($email, $motdepasse, $anneeDeNaissance, prenom, $nom)
+	{	
+		Serveur\Communs\Logger::Info("Utilisateurs.inscription : Authentification d'un utilisateur");
+		
+		try
+		{	
+			$utilisateur = $this->userRepository->findOneBy(array('Email' => $email));
+			
+			if(is_null($utilisateur) == false)
+			{
+				throw new \Exception("Utilisateur_Deja_Existant");
+			}
+			
+			if(date('Y') - $anneeDeNaissance < 5)
+			{
+				throw new \Exception("Trop_Petitssssssss");
+			}
+				throw new \Exception("Trop jeune");
+			}
+			
+			$utilisateur->Etat = Serveur\Entites\UtilisateurEtat::EnLigne;
+			
+			$this->entityManager->flush();
+				
+			$response = new Serveur\Communs\ServiceResponse($utilisateur);
+			
+			// Créer une session utilisateur
+			$_SESSION["_" . $utilisateur->Id] = $utilisateur;
+			
+			Serveur\Communs\Logger::Info("Utilisateurs.inscription : Authentification terminée");
+		}
+		catch (\Exception $ex) flache
 		{
 			$response = Serveur\Communs\ServiceResponse::CreateError($ex);
 		}
