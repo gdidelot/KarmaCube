@@ -40,9 +40,7 @@ class Utilisateurs implements IUtilisateurs
 		$this->entityManager = $bootstrap->getEntityManager();
 		$this->userRepository = $this->entityManager->getRepository('Serveur\Entites\Utilisateur');
 	}
-	*
-	
-	
+
 	/**
     * Authentification d'un utilisateur
     *
@@ -95,7 +93,7 @@ class Utilisateurs implements IUtilisateurs
 		return $response;
 	}
 	
-	public function inscription($email, $motdepasse, $anneeDeNaissance, prenom, $nom)
+	public function inscription($email, $motdepasse, $anneeDeNaissance, $prenom, $nom)
 	{	
 		Serveur\Communs\Logger::Info("Utilisateurs.inscription : Authentification d'un utilisateur");
 		
@@ -110,8 +108,6 @@ class Utilisateurs implements IUtilisateurs
 			
 			if(date('Y') - $anneeDeNaissance < 5)
 			{
-				throw new \Exception("Trop_Petitssssssss");
-			}
 				throw new \Exception("Trop jeune");
 			}
 			
@@ -126,7 +122,7 @@ class Utilisateurs implements IUtilisateurs
 			
 			Serveur\Communs\Logger::Info("Utilisateurs.inscription : Authentification terminée");
 		}
-		catch (\Exception $ex) flache
+		catch (\Exception $ex)
 		{
 			$response = Serveur\Communs\ServiceResponse::CreateError($ex);
 		}
