@@ -32,36 +32,18 @@ app.controller('souscriptioncontroleur', ["$injector", "$scope", function($injec
 	
     //#region Public functions
 	
-	$scope.authenticateCommand = function(login) {
+	$scope.inscriptionCommand = function(utilisateur) {
 		$rootScope.authenticating = true;
-		userservices.authenticate(function (data) {
-			console.debug('userservices authenticate received');
+		userservices.inscription(function (data) {
+			console.debug('userservices inscription received');
 			if(data.isFailed) {
 				$rootScope.notify(gettextCatalog.getString(data.exception), 'warning');
 			}
 			else {
-				$rootScope.currentuser = data.response;
-				localStorage.removeItem('currentuser');
-				localStorage.setItem('currentuser', JSON.stringify($rootScope.currentuser));
-				$rootScope.changeLocation('game');
+				$rootScope.changeLocation('home');
 			}
 			$rootScope.authenticating = false;
-		}, login.Identifiant, login.MotDePasse);
-	};
-	
-	$scope.resetPasswordCommand = function(email){
-		$rootScope.retrievingpassword = true;
-		userservices.generateNewPassword(function (data) {
-			console.debug('userservices authenticate received');
-			if(data.isFailed) {
-				$rootScope.notify(gettextCatalog.getString(data.exception), 'warning');
-			}
-			else {
-				$rootScope.notify(gettextCatalog.getString('Check_Your_Email'), 'warning');
-				$rootScope.changeLocation('login');
-			}
-			$rootScope.retrievingpassword = false;
-		}, email);
+		}, utilisateur.Identifiant, utilisateur.MotDePasse);
 	};
 	
 	//#endregion Public functions

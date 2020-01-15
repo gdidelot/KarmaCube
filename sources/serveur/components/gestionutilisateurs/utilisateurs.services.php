@@ -111,8 +111,10 @@ class Utilisateurs implements IUtilisateurs
 				throw new \Exception("Trop jeune");
 			}
 			
+			$utilisateur = new Serveur\Entites\Utilisateur($nom, $prenom, $motdepasse, $anneeDeNaissance, $email);			
 			$utilisateur->Etat = Serveur\Entites\UtilisateurEtat::EnLigne;
 			
+			$this->entityManager->persist($utilisateur);
 			$this->entityManager->flush();
 				
 			$response = new Serveur\Communs\ServiceResponse($utilisateur);

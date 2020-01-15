@@ -22,6 +22,23 @@
 				requestPromise.finally(function() {
 					requestservices.remove(url);			
 				});
+			},
+			inscription: function(callback, email, motdepasse, anneeDeNaissance, prenom, nom) {
+				console.log('userservices - start to inscription');
+				var canceller = $q.defer();
+				requestservices.add({ url: app.servicebase, canceller: canceller });
+				var requestPromise = $http.post(app.servicebase, { "context" : { "service" : "inscription", "user" : $rootScope.currentuser }, "email" : email, "motdepasse" : motdepasse, "anneeDeNaissance" : anneeDeNaissance, "prenom" : prenom, "nom" : nom}, { timeout: canceller.promise });
+				requestPromise.success(function(data, status) {
+					console.info("inscription - call success"); 
+					callback(data);
+				});
+				requestPromise.error(function(data, status) {
+					console.error("inscription - call failed"); 	
+					throw status + ' : ' + data;		
+				});
+				requestPromise.finally(function() {
+					requestservices.remove(url);			
+				});
 			}
 			/*
 			obtenirUtilisateurs: function(callback) {
