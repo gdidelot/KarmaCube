@@ -33,7 +33,11 @@ app.controller('souscriptioncontroleur', ["$injector", "$scope", function($injec
     //#region Public functions
 	
 	$scope.inscriptionCommand = function(utilisateur) {
+<<<<<<< HEAD
 		$scope.enregistrementinscription = true;
+=======
+		$rootScope.authenticating = true;
+>>>>>>> 6ccc24e84c32f229142a62f9bb3f4027755abb65
 		userservices.inscription(function (data) {
 			console.debug('userservices inscription received');
 			if(data.isFailed) {
@@ -42,8 +46,13 @@ app.controller('souscriptioncontroleur', ["$injector", "$scope", function($injec
 			else {
 				$rootScope.changeLocation('home');
 			}
+<<<<<<< HEAD
 			$scope.enregistrementinscription = false;
 		}, utilisateur.email, utilisateur.motdepasse, utilisateur.anneeDeNaissance, utilisateur.nom, utilisateur.prenom);
+=======
+			$rootScope.authenticating = false;
+		}, utilisateur.Identifiant, utilisateur.MotDePasse);
+>>>>>>> 6ccc24e84c32f229142a62f9bb3f4027755abb65
 	};
 	
 	//#endregion Public functions

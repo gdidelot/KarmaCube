@@ -32,7 +32,7 @@
   "phonenumber": "06.48.30.54.22",
   "rootpath": "D:/personnel/projets_associatifs/Ecole des Geeks/IntraGeeks/src/",
   "documentsrootpath": "Documents",
-  "tempurl": "http://localhost/KarmaCube/sources/core/components/documentsmanager/temp/",
+  "tempurl": "http://localhost/karma%20cube/KarmaCube/sources/core/components/documentsmanager/temp/",
   "rootsite": "http://localhost/KarmaCube/sources/",
   "servicebase": "http://localhost/KarmaCube/sources/serveur/server.class.php",
   "avancer": "flechehaut"

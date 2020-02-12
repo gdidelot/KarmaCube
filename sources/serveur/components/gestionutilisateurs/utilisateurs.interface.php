@@ -27,7 +27,10 @@ interface IUtilisateurs
     public function authentification($email, $motdepasse);
 	
 	public function inscription($email, $motdepasse, $anneeDeNaissance, $prenom, $nom);
+<<<<<<< HEAD
    
+=======
+>>>>>>> 6ccc24e84c32f229142a62f9bb3f4027755abb65
 }
 
 ?>

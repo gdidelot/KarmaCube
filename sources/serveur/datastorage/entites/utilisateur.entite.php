@@ -34,7 +34,7 @@ class Utilisateur extends Entite
 	
 	/**
     * Etat de l'utilisateur
-    * @var string
+    * @var integer
     * @Column(type="integer")
     */
     public $Etat;
@@ -78,6 +78,7 @@ class Utilisateur extends Entite
 	/**
     * Construire un nouvel utilisateur
     */
+<<<<<<< HEAD
     public function __construct($nom, $prenom, $motdepasse, $karma, $email, $anneeDeNaissance)
     {
         $this->Nom = $nom;
@@ -86,6 +87,14 @@ class Utilisateur extends Entite
         $this->Etat = UtilisateurEtat::Inconnu;
         $this->MotDePasse = hash('sha256',$motdepasse);
         $this->Karma = $karma;
+=======
+    public function __construct($nom, $prenom, $motdepasse, $email)
+    {
+        $this->Nom = $nom;
+        $this->Prenom = $prenom;
+        $this->Etat = UtilisateurEtat::Invalide;
+        $this->MotDePasse = hash('sha256', $motdepasse);
+>>>>>>> 6ccc24e84c32f229142a62f9bb3f4027755abb65
         $this->Email = $email;
         $this->Argents = 0;
         $this->DateDeModification = new \DateTime();

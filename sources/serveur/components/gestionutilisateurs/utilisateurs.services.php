@@ -111,12 +111,16 @@ class Utilisateurs implements IUtilisateurs
 				throw new \Exception("Trop jeune");
 			}
 			
+<<<<<<< HEAD
 			$karma = new Serveur\Entites\Karma();
 			
 			$this->entityManager->persist($karma);
 			$this->entityManager->flush();
 			
 			$utilisateur = new Serveur\Entites\Utilisateur($nom, $prenom, $motdepasse, $karma, $email, $anneeDeNaissance);
+=======
+			$utilisateur = new Serveur\Entites\Utilisateur($nom, $prenom, $motdepasse, $anneeDeNaissance, $email);			
+>>>>>>> 6ccc24e84c32f229142a62f9bb3f4027755abb65
 			$utilisateur->Etat = Serveur\Entites\UtilisateurEtat::EnLigne;
 			
 			$this->entityManager->persist($utilisateur);
