@@ -1,10 +1,42 @@
 <section>
 	<div class="row form-group">
 		<div class="col-md-4">
-			<label>Identifiant</label>
+			<label>Email</label>
 		</div>
 		<div class="col-md-8">
-			<input class="form-control" type="text" ng-model="login.Identifiant" maxlength="30"/>
+			<input class="form-control" type="email" ng-model="utilisateur.email" maxlength="30"/>
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-md-4">
+			<label>Mot de passe</label>
+		</div>
+		<div class="col-md-8">
+			<input class="form-control" type="password" ng-model="utilisateur.motdepasse" maxlength="30"/>
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-md-4">
+			<label>Nom</label>
+		</div>
+		<div class="col-md-8">
+			<input class="form-control" type="text" ng-model="utilisateur.nom" maxlength="30"/>
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-md-4">
+			<label>Prénom</label>
+		</div>
+		<div class="col-md-8">
+			<input class="form-control" type="text" ng-model="utilisateur.prenom" maxlength="30"/>
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-md-4">
+			<label>Année De Naissance</label>
+		</div>
+		<div class="col-md-8">
+			<input class="form-control" type="number" ng-model="utilisateur.anneeDeNaissance" maxlength="30"/>
 		</div>
 	</div>
 	
@@ -13,10 +45,7 @@
 			<button class="btn btn-default" ng-click="changeLocation('accueil')">Annuler</button>
 		</div>
 		<div class="col-md-4">
-			<button class="btn btn-warning" ng-click="changeLocation('/resetMotdePasse')">Mot de passe oublié</button>
-		</div>
-		<div class="col-md-4">
-			<button class="btn btn-success" ng-click="authenticateCommand(login)">Valider</button>
+			<button class="btn btn-success" ng-disabled="enregistrementinscription" ng-click="inscriptionCommand(utilisateur)">Valider</button>
 		</div>
 	</div>
 </section>

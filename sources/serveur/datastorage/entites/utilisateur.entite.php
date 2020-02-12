@@ -26,6 +26,13 @@ class Utilisateur extends Entite
     public $Prenom;
 	
 	/**
+    * Année de naissance de l'utilisateur
+    * @var integer
+    * @Column(type="integer")
+    */
+    public $AnneeDeNaissance;
+	
+	/**
     * Etat de l'utilisateur
     * @var string
     * @Column(type="integer")
@@ -71,15 +78,15 @@ class Utilisateur extends Entite
 	/**
     * Construire un nouvel utilisateur
     */
-    public function __construct($nom, $prenom, $nationalite, $motdepasse, $karma, $email)
+    public function __construct($nom, $prenom, $motdepasse, $karma, $email, $anneeDeNaissance)
     {
         $this->Nom = $nom;
         $this->Prenom = $prenom;
-        $this->Etat = Serveur\Entites\UtilisateurEtat::Inconnu;
-        $this->Nationalite = $nationalite;
-        $this->MotDePasse = $motdepasse;
+        $this->AnneeDeNaissance = $anneeDeNaissance;
+        $this->Etat = UtilisateurEtat::Inconnu;
+        $this->MotDePasse = hash('sha256',$motdepasse);
         $this->Karma = $karma;
-        $this->Email = $mail;
+        $this->Email = $email;
         $this->Argents = 0;
         $this->DateDeModification = new \DateTime();
         $this->DateDeCreation = new \DateTime();

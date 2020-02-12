@@ -95,7 +95,7 @@ class Utilisateurs implements IUtilisateurs
 	
 	public function inscription($email, $motdepasse, $anneeDeNaissance, $prenom, $nom)
 	{	
-		Serveur\Communs\Logger::Info("Utilisateurs.inscription : Authentification d'un utilisateur");
+		Serveur\Communs\Logger::Info("Utilisateurs.inscription : Inscription d'un utilisateur");
 		
 		try
 		{	
@@ -111,8 +111,15 @@ class Utilisateurs implements IUtilisateurs
 				throw new \Exception("Trop jeune");
 			}
 			
+			$karma = new Serveur\Entites\Karma();
+			
+			$this->entityManager->persist($karma);
+			$this->entityManager->flush();
+			
+			$utilisateur = new Serveur\Entites\Utilisateur($nom, $prenom, $motdepasse, $karma, $email, $anneeDeNaissance);
 			$utilisateur->Etat = Serveur\Entites\UtilisateurEtat::EnLigne;
 			
+			$this->entityManager->persist($utilisateur);
 			$this->entityManager->flush();
 				
 			$response = new Serveur\Communs\ServiceResponse($utilisateur);
@@ -120,7 +127,7 @@ class Utilisateurs implements IUtilisateurs
 			// Créer une session utilisateur
 			$_SESSION["_" . $utilisateur->Id] = $utilisateur;
 			
-			Serveur\Communs\Logger::Info("Utilisateurs.inscription : Authentification terminée");
+			Serveur\Communs\Logger::Info("Utilisateurs.inscription : Inscription terminée");
 		}
 		catch (\Exception $ex)
 		{

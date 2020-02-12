@@ -25,6 +25,8 @@ interface IUtilisateurs
     * @return Serveur\Entites\Utilisateur L'utilisateur authentifié
     */
     public function authentification($email, $motdepasse);
+	
+	public function inscription($email, $motdepasse, $anneeDeNaissance, $prenom, $nom);
    
 }
 

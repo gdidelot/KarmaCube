@@ -1,13 +1,13 @@
 <?php
 /**
 * Service access layer class
-* Auto generated on the 2019-07-12 11:08:29
+* Auto generated on the 2020-01-15 14:01:20
 */
 namespace Serveur;
 
 /**
 * Service access layer class
-* Auto generated on the 2019-07-12 11:08:29
+* Auto generated on the 2020-01-15 14:01:20
 */
 class Services
 {
@@ -48,6 +48,12 @@ class Services
 	public function authentification($email, $motdepasse)
 	{
 		return $this->IUtilisateurs->authentification($email, $motdepasse);
+	}
+
+	
+	public function inscription($email, $motdepasse, $anneeDeNaissance, $prenom, $nom)
+	{
+		return $this->IUtilisateurs->inscription($email, $motdepasse, $anneeDeNaissance, $prenom, $nom);
 	}
 
 	
