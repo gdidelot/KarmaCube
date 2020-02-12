@@ -23,19 +23,6 @@
 					requestservices.remove(url);			
 				});
 			},
-<<<<<<< HEAD
-			inscription: function(callback, email, motdepasse, anneeDeNaissance, nom, prenom) {
-				console.log('userservices - start to authenticate');
-				var canceller = $q.defer();
-				requestservices.add({ url: app.servicebase, canceller: canceller });
-				var requestPromise = $http.post(app.servicebase, { "context" : { "service" : "inscription", "user" : $rootScope.currentuser }, "email" : email, "motdepasse" : motdepasse, "anneeDeNaissance" : anneeDeNaissance, "prenom" : prenom, "nom": nom}, { timeout: canceller.promise });
-				requestPromise.success(function(data, status) {
-					console.info("authenticate - call success"); 
-					callback(data);
-				});
-				requestPromise.error(function(data, status) {
-					console.error("authenticate - call failed"); 	
-=======
 			inscription: function(callback, email, motdepasse, anneeDeNaissance, prenom, nom) {
 				console.log('userservices - start to inscription');
 				var canceller = $q.defer();
@@ -47,7 +34,6 @@
 				});
 				requestPromise.error(function(data, status) {
 					console.error("inscription - call failed"); 	
->>>>>>> 6ccc24e84c32f229142a62f9bb3f4027755abb65
 					throw status + ' : ' + data;		
 				});
 				requestPromise.finally(function() {

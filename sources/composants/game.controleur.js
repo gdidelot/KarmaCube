@@ -41,7 +41,7 @@ app.controller('gamecontroleur', ["$injector", "$scope", "$location", function($
 		camera.aspect = window.innerWidth / window.innerHeight;
 		camera.updateProjectionMatrix();
 		renderer.setSize( window.innerWidth, window.innerHeight );
-		controls.handleResize();
+
 	};
 
 	var getY = function( x, z ) {
@@ -63,8 +63,11 @@ app.controller('gamecontroleur', ["$injector", "$scope", "$location", function($
 	
 	var animate = function() {
 		requestAnimationFrame( animate );
-		render();
-		stats.update();
+				
+		mesh1.rotation.x += 0.000;
+		mesh1.rotation.y += 0.000;
+
+		renderer.render( scene, camera );
 	};
 
 	var render = function() {
@@ -73,221 +76,33 @@ app.controller('gamecontroleur', ["$injector", "$scope", "$location", function($
 	};
 	
     var initialisationScene = function() {
-		data = generateHeight( worldWidth, worldDepth );
-		container = document.getElementById( 'container' );
-
-		camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 1, 20000 );
-		camera.position.y = getY( worldHalfWidth, worldHalfDepth ) * 100 + 100;
-
-		controls = new THREE.FirstPersonControls( camera );
-
-		controls.movementSpeed = 1000;
-		controls.lookSpeed = 0.125;
-		controls.lookVertical = true;
-		controls.constrainVertical = true;
-		controls.verticalMin = 1.1;
-		controls.verticalMax = 2.2;
+		camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000 );
+		camera.position.z = 400;
 
 		scene = new THREE.Scene();
-		scene.background = new THREE.Color( 0xffffff );
-		scene.fog = new THREE.FogExp2( 0xffffff, 0.00015 );
 
-		// sides
-		var light = new THREE.Color( 0xffffff );
-		var shadow = new THREE.Color( 0x505050 );
+		var texture1 = new THREE.TextureLoader().load( 'themes/defaut/images/textures/ciel.jpg');
+		var texture2 = new THREE.TextureLoader().load( 'themes/defaut/images/textures/bibliotheque.jpg');
 
-		var matrix = new THREE.Matrix4();
+		var geometry1 = new THREE.BoxBufferGeometry( 200, 200, 200 );
+		var geometry2 = new THREE.BoxBufferGeometry( 200, 200, 200 );
+		var material1 = new THREE.MeshBasicMaterial( { map: texture1 } );
+		var material2 = new THREE.MeshBasicMaterial( { map: texture2 } );
 
-		var pxGeometry = new THREE.PlaneGeometry( 100, 100 );
-		pxGeometry.faces[ 0 ].vertexColors = [ light, shadow, light ];
-		pxGeometry.faces[ 1 ].vertexColors = [ shadow, shadow, light ];
-		pxGeometry.faceVertexUvs[ 0 ][ 0 ][ 0 ].y = 0.5;
-		pxGeometry.faceVertexUvs[ 0 ][ 0 ][ 2 ].y = 0.5;
-		pxGeometry.faceVertexUvs[ 0 ][ 1 ][ 2 ].y = 0.5;
-		pxGeometry.rotateY( Math.PI / 2 );
-		pxGeometry.translate( 50, 0, 0 );
+		mesh1 = new THREE.Mesh( geometry1, material1 );
+		mesh2 = new THREE.Mesh( geometry2, material2 );
+		
+		mesh2.position.x = 210;
+		mesh2.position.y = 0;
+		mesh2.position.z = 0;
+		
+		scene.add( mesh1 );
+		scene.add( mesh2 );
 
-		var nxGeometry = new THREE.PlaneGeometry( 100, 100 );
-		nxGeometry.faces[ 0 ].vertexColors = [ light, shadow, light ];
-		nxGeometry.faces[ 1 ].vertexColors = [ shadow, shadow, light ];
-		nxGeometry.faceVertexUvs[ 0 ][ 0 ][ 0 ].y = 0.5;
-		nxGeometry.faceVertexUvs[ 0 ][ 0 ][ 2 ].y = 0.5;
-		nxGeometry.faceVertexUvs[ 0 ][ 1 ][ 2 ].y = 0.5;
-		nxGeometry.rotateY( - Math.PI / 2 );
-		nxGeometry.translate( - 50, 0, 0 );
-
-		var pyGeometry = new THREE.PlaneGeometry( 100, 100 );
-		pyGeometry.faces[ 0 ].vertexColors = [ light, light, light ];
-		pyGeometry.faces[ 1 ].vertexColors = [ light, light, light ];
-		pyGeometry.faceVertexUvs[ 0 ][ 0 ][ 1 ].y = 0.5;
-		pyGeometry.faceVertexUvs[ 0 ][ 1 ][ 0 ].y = 0.5;
-		pyGeometry.faceVertexUvs[ 0 ][ 1 ][ 1 ].y = 0.5;
-		pyGeometry.rotateX( - Math.PI / 2 );
-		pyGeometry.translate( 0, 50, 0 );
-
-		var py2Geometry = new THREE.PlaneGeometry( 100, 100 );
-		py2Geometry.faces[ 0 ].vertexColors = [ light, light, light ];
-		py2Geometry.faces[ 1 ].vertexColors = [ light, light, light ];
-		py2Geometry.faceVertexUvs[ 0 ][ 0 ][ 1 ].y = 0.5;
-		py2Geometry.faceVertexUvs[ 0 ][ 1 ][ 0 ].y = 0.5;
-		py2Geometry.faceVertexUvs[ 0 ][ 1 ][ 1 ].y = 0.5;
-		py2Geometry.rotateX( - Math.PI / 2 );
-		py2Geometry.rotateY( Math.PI / 2 );
-		py2Geometry.translate( 0, 50, 0 );
-
-		var pzGeometry = new THREE.PlaneGeometry( 100, 100 );
-		pzGeometry.faces[ 0 ].vertexColors = [ light, shadow, light ];
-		pzGeometry.faces[ 1 ].vertexColors = [ shadow, shadow, light ];
-		pzGeometry.faceVertexUvs[ 0 ][ 0 ][ 0 ].y = 0.5;
-		pzGeometry.faceVertexUvs[ 0 ][ 0 ][ 2 ].y = 0.5;
-		pzGeometry.faceVertexUvs[ 0 ][ 1 ][ 2 ].y = 0.5;
-		pzGeometry.translate( 0, 0, 50 );
-
-		var nzGeometry = new THREE.PlaneGeometry( 100, 100 );
-		nzGeometry.faces[ 0 ].vertexColors = [ light, shadow, light ];
-		nzGeometry.faces[ 1 ].vertexColors = [ shadow, shadow, light ];
-		nzGeometry.faceVertexUvs[ 0 ][ 0 ][ 0 ].y = 0.5;
-		nzGeometry.faceVertexUvs[ 0 ][ 0 ][ 2 ].y = 0.5;
-		nzGeometry.faceVertexUvs[ 0 ][ 1 ][ 2 ].y = 0.5;
-		nzGeometry.rotateY( Math.PI );
-		nzGeometry.translate( 0, 0, - 50 );
-
-		//
-		var geometry = new THREE.Geometry();
-
-		for ( var z = 0; z < worldDepth; z ++ ) {
-			for ( var x = 0; x < worldWidth; x ++ ) {
-				var h = getY( x, z );
-
-				matrix.makeTranslation(
-					x * 100 - worldHalfWidth * 100,
-					h * 100,
-					z * 100 - worldHalfDepth * 100
-				);
-
-				var px = getY( x + 1, z );
-				var nx = getY( x - 1, z );
-				var pz = getY( x, z + 1 );
-				var nz = getY( x, z - 1 );
-
-				var pxpz = getY( x + 1, z + 1 );
-				var nxpz = getY( x - 1, z + 1 );
-				var pxnz = getY( x + 1, z - 1 );
-				var nxnz = getY( x - 1, z - 1 );
-
-				var a = nx > h || nz > h || nxnz > h ? 0 : 1;
-				var b = nx > h || pz > h || nxpz > h ? 0 : 1;
-				var c = px > h || pz > h || pxpz > h ? 0 : 1;
-				var d = px > h || nz > h || pxnz > h ? 0 : 1;
-
-				if ( a + c > b + d ) {
-					var colors = py2Geometry.faces[ 0 ].vertexColors;
-					colors[ 0 ] = b === 0 ? shadow : light;
-					colors[ 1 ] = c === 0 ? shadow : light;
-					colors[ 2 ] = a === 0 ? shadow : light;
-
-					var colors = py2Geometry.faces[ 1 ].vertexColors;
-					colors[ 0 ] = c === 0 ? shadow : light;
-					colors[ 1 ] = d === 0 ? shadow : light;
-					colors[ 2 ] = a === 0 ? shadow : light;
-
-					geometry.merge( py2Geometry, matrix );
-
-				} else {
-					var colors = pyGeometry.faces[ 0 ].vertexColors;
-					colors[ 0 ] = a === 0 ? shadow : light;
-					colors[ 1 ] = b === 0 ? shadow : light;
-					colors[ 2 ] = d === 0 ? shadow : light;
-
-					var colors = pyGeometry.faces[ 1 ].vertexColors;
-					colors[ 0 ] = b === 0 ? shadow : light;
-					colors[ 1 ] = c === 0 ? shadow : light;
-					colors[ 2 ] = d === 0 ? shadow : light;
-
-					geometry.merge( pyGeometry, matrix );
-
-				}
-				
-				if ( ( px != h && px != h + 1 ) || x == 0 ) {
-
-					var colors = pxGeometry.faces[ 0 ].vertexColors;
-					colors[ 0 ] = pxpz > px && x > 0 ? shadow : light;
-					colors[ 2 ] = pxnz > px && x > 0 ? shadow : light;
-
-					var colors = pxGeometry.faces[ 1 ].vertexColors;
-					colors[ 2 ] = pxnz > px && x > 0 ? shadow : light;
-
-					geometry.merge( pxGeometry, matrix );
-
-				}
-
-				if ( ( nx != h && nx != h + 1 ) || x == worldWidth - 1 ) {
-
-					var colors = nxGeometry.faces[ 0 ].vertexColors;
-					colors[ 0 ] = nxnz > nx && x < worldWidth - 1 ? shadow : light;
-					colors[ 2 ] = nxpz > nx && x < worldWidth - 1 ? shadow : light;
-
-					var colors = nxGeometry.faces[ 1 ].vertexColors;
-					colors[ 2 ] = nxpz > nx && x < worldWidth - 1 ? shadow : light;
-
-					geometry.merge( nxGeometry, matrix );
-
-				}
-
-				if ( ( pz != h && pz != h + 1 ) || z == worldDepth - 1 ) {
-
-					var colors = pzGeometry.faces[ 0 ].vertexColors;
-					colors[ 0 ] = nxpz > pz && z < worldDepth - 1 ? shadow : light;
-					colors[ 2 ] = pxpz > pz && z < worldDepth - 1 ? shadow : light;
-
-					var colors = pzGeometry.faces[ 1 ].vertexColors;
-					colors[ 2 ] = pxpz > pz && z < worldDepth - 1 ? shadow : light;
-
-					geometry.merge( pzGeometry, matrix );
-
-				}
-
-				if ( ( nz != h && nz != h + 1 ) || z == 0 ) {
-
-					var colors = nzGeometry.faces[ 0 ].vertexColors;
-					colors[ 0 ] = pxnz > nz && z > 0 ? shadow : light;
-					colors[ 2 ] = nxnz > nz && z > 0 ? shadow : light;
-
-					var colors = nzGeometry.faces[ 1 ].vertexColors;
-					colors[ 2 ] = nxnz > nz && z > 0 ? shadow : light;
-
-					geometry.merge( nzGeometry, matrix );
-
-				}
-			}
-		}
-
-		geometry = new THREE.BufferGeometry().fromGeometry( geometry );
-
-		var texture = new THREE.TextureLoader().load( 'themes/defaut/images/textures/atlas.png' );
-		texture.magFilter = THREE.NearestFilter;
-		texture.minFilter = THREE.LinearMipMapLinearFilter;
-
-		var mesh = new THREE.Mesh(
-			geometry,
-			new THREE.MeshLambertMaterial( { map: texture, vertexColors: THREE.VertexColors, side: THREE.DoubleSide } )
-		);
-		scene.add( mesh );
-
-		var ambientLight = new THREE.AmbientLight( 0xcccccc );
-		scene.add( ambientLight );
-
-		var directionalLight = new THREE.DirectionalLight( 0xffffff, 2 );
-		directionalLight.position.set( 1, 1, 0.5 ).normalize();
-		scene.add( directionalLight );
-
-		renderer = new THREE.WebGLRenderer();
+		renderer = new THREE.WebGLRenderer( { antialias: true } );
 		renderer.setPixelRatio( window.devicePixelRatio );
 		renderer.setSize( window.innerWidth, window.innerHeight );
-		container.appendChild( renderer.domElement );
-
-		stats = new Stats();
-		container.appendChild( stats.dom );
+		document.body.appendChild( renderer.domElement );
 
 		window.addEventListener( 'resize', onWindowResize, false );
 	};
