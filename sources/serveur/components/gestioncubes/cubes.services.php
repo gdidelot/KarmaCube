@@ -48,6 +48,25 @@ class Cubes implements ICubes
 	
     public function obtenirCubes()
 	{
+		Serveur\Communs\Logger::Info("Cubes.obtenirCubes : Obtenir cubes");
+		
+		$response = null;
+		
+		try
+		{	
+			$utilisateur = $this->cubeRepository->findAll();
+			
+			$response = new Serveur\Communs\ServiceResponse($utilisateur);
+			
+			
+			Serveur\Communs\Logger::Info("Cubes.obtenirCubes : Obtenir cubes terminé");
+		}
+		catch (\Exception $ex) 
+		{
+			$response = Serveur\Communs\ServiceResponse::CreateError($ex);
+		}
+		
+		return $response;
 	}
 	
 	public function ajouterCube($texture, $positionX, $positionY, $positionZ)
