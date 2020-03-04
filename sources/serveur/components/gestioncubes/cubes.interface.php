@@ -18,11 +18,9 @@ interface ICubes
 {
     public function obtenirCubes();
 	
-	public function ajouterCube($cube);
+	public function ajouterCube($texture, $positionX, $positionY, $positionZ);
 	
-	public function modifierCube($cube);
-	
-	public function supprimerCube($cube);
+	public function modifierCube($cubeId, $texture, $positionX, $positionY, $positionZ);
 }
 
 ?>

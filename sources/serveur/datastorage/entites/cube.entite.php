@@ -27,12 +27,44 @@ class Cube extends Entite
     public $Dimension;
 	
 	/**
+    * La texture
+    * @var string
+    * @Column(type="string")
+    */
+    public $Texture;
+	
+	/**
+    * La position
+    * @var integer
+    * @Column(type="integer")
+    */
+    public $PositionX;
+	
+	/**
+    * La position
+    * @var integer
+    * @Column(type="integer")
+    */
+    public $PositionY;
+	
+	/**
+    * La position
+    * @var integer
+    * @Column(type="integer")
+    */
+    public $PositionZ;
+	
+	/**
     * Construire un nouveau cube
     */
-    public function __construct($materiau, $dimension)
+    public function __construct($texture, $positionX, $positionY, $positionZ)
     {
-        $this->Materiau = $materiau;
-        $this->Dimension = $dimension;
+        //$this->Materiau = $materiau;
+        //$this->Dimension = $dimension;
+        $this->Texture = $texture;
+        $this->PositionX = $positionX;
+        $this->PositionY = $positionY;
+        $this->PositionZ = $positionZ;
         $this->DateDeModification = new \DateTime();
         $this->DateDeCreation = new \DateTime();
 	}

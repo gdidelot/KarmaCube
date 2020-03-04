@@ -50,16 +50,32 @@ class Cubes implements ICubes
 	{
 	}
 	
-	public function ajouterCube($cube)
+	public function ajouterCube($texture, $positionX, $positionY, $positionZ)
 	{
+		Serveur\Communs\Logger::Info("Cubes.ajouterCube : Ajout d'un cube");
+		
+		try
+		{	
+			$cube = new Serveur\Entites\Cube($texture, $positionX, $positionY, $positionZ);
+			
+			$this->entityManager->persist($cube);
+			$this->entityManager->flush();
+				
+			$response = new Serveur\Communs\ServiceResponse($cube);
+			
+			Serveur\Communs\Logger::Info("Cubes.ajouterCube : ajout terminée");
+		}
+		catch (\Exception $ex)
+		{
+			$response = Serveur\Communs\ServiceResponse::CreateError($ex);
+		}
+		
+		return $response;
 	}
 	
-	public function modifierCube($cube)
+	public function modifierCube($cubeId, $texture, $positionX, $positionY, $positionZ)
 	{
-	}
-	
-	public function supprimerCube($cube)
-	{
+		
 	}
 }
 

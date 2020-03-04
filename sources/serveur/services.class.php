@@ -1,21 +1,13 @@
 <?php
 /**
 * Service access layer class
-<<<<<<< HEAD
-* Auto generated on the 2020-01-15 14:01:20
-=======
-* Auto generated on the 2020-01-15 13:40:35
->>>>>>> 6ccc24e84c32f229142a62f9bb3f4027755abb65
+* Auto generated on the 2020-03-04 14:31:51
 */
 namespace Serveur;
 
 /**
 * Service access layer class
-<<<<<<< HEAD
-* Auto generated on the 2020-01-15 14:01:20
-=======
-* Auto generated on the 2020-01-15 13:40:35
->>>>>>> 6ccc24e84c32f229142a62f9bb3f4027755abb65
+* Auto generated on the 2020-03-04 14:31:51
 */
 class Services
 {
@@ -125,21 +117,15 @@ class Services
 	}
 
 	
-	public function ajouterCube($cube)
+	public function ajouterCube($texture, $positionX, $positionY, $positionZ)
 	{
-		return $this->ICubes->ajouterCube($cube);
+		return $this->ICubes->ajouterCube($texture, $positionX, $positionY, $positionZ);
 	}
 
 	
-	public function modifierCube($cube)
+	public function modifierCube($cubeId, $texture, $positionX, $positionY, $positionZ)
 	{
-		return $this->ICubes->modifierCube($cube);
-	}
-
-	
-	public function supprimerCube($cube)
-	{
-		return $this->ICubes->supprimerCube($cube);
+		return $this->ICubes->modifierCube($cubeId, $texture, $positionX, $positionY, $positionZ);
 	}
 
  }

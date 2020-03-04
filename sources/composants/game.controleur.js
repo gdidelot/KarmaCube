@@ -151,6 +151,10 @@ app.controller('gamecontroleur', ["$injector", "$scope", "$location", function($
 		// Génération des cubes
 		genererCube('grass_dirt.png', meshes.length * CUBESIZE);
 		genererCube('grass_dirt.png', meshes.length * CUBESIZE);
+		genererCube('grass_dirt.png', meshes.length * CUBESIZE);
+		genererCube('grass_dirt.png', meshes.length * CUBESIZE);
+		genererCube('grass_dirt.png', meshes.length * CUBESIZE);
+		genererCube('grass_dirt.png', meshes.length * CUBESIZE);
 		
 		// Lumière du jour
 		var light = new THREE.DirectionalLight( 0xaabbff, 0.3 );
