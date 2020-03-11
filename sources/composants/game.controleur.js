@@ -138,16 +138,35 @@ app.controller('gamecontroleur', ["$injector", "$scope", "$location", function($
 		//var line = new THREE.Line(geometry, material, THREE.LineSegments);
 		//scene.add(line);
 		// FLOOR
-		var floorTexture = new THREE.ImageUtils.loadTexture( 'themes/defaut/images/textures/herbe.jpg' );
-		floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
-		floorTexture.repeat.set( 10, 10 );
-		var floorMaterial = new THREE.MeshBasicMaterial( { map: floorTexture, side: THREE.DoubleSide } );
-		var floorGeometry = new THREE.PlaneGeometry(1000, 1000, 10, 10);
-		var floor = new THREE.Mesh(floorGeometry, floorMaterial);
-		floor.position.y = -0.5;
-		floor.rotation.x = Math.PI / 2;
-		scene.add(floor);
+		//var floorTexture = new THREE.ImageUtils.loadTexture( 'themes/defaut/images/textures/herbe.jpg' );
+		//floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
+		//floorTexture.repeat.set( 10, 10 );
+		//var floorMaterial = new THREE.MeshBasicMaterial( { map: floorTexture, side: THREE.DoubleSide } );
+		//var floorGeometry = new THREE.PlaneGeometry(1000, 1000, 10, 10);
+		//var floor = new THREE.Mesh(floorGeometry, floorMaterial);
+		//floor.position.y = -0.5;
+		//floor.rotation.x = Math.PI / 2;
+		//scene.add(floor);
 		
+		for(var i = 0; i < 9; i++) {
+			for(var j = 0; j < 9; j++) {
+				cubeservices.ajouterCube(function (data) {
+				console.debug('cubeservices ajouterCube received');
+					if(data.isFailed) {
+						$rootScope.notify(gettextCatalog.getString(data.exception), 'warning');
+					}
+					else {
+						$scope.cubes = data.response;
+						
+						for(var i = 0; i < $scope.cubes.length; i++) {
+							var cube = $scope.cubes[i];
+							genererCube(cube.Texture, cube.PositionX, cube.PositionY, cube.PositionZ);
+						}
+					}
+					$scope.chargercarte = false;
+				}, 'grass_dirt.png', i * CUBESIZE, 0, j * CUBESIZE);
+			}
+		}
 		
 		// Génération des cubes
 		$scope.chargercarte = true;

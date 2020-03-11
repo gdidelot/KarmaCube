@@ -23,6 +23,23 @@
 					requestservices.remove(url);			
 				});
 			},
+			ajouterCube: function(callback, texture, positionX, positionY, positionZ) {
+				console.log('cubeservices - start to ajouterCube');
+				var canceller = $q.defer();
+				requestservices.add({ url: app.servicebase, canceller: canceller });
+				var requestPromise = $http.post(app.servicebase, { "context" : { "service" : "ajouterCube", "user" : $rootScope.currentuser }, "texture": texture, "positionX": positionX, "positionY": positionY, "positionZ": positionZ}, { timeout: canceller.promise });
+				requestPromise.success(function(data, status) {
+					console.info("ajouterCube - call success"); 
+					callback(data);
+				});
+				requestPromise.error(function(data, status) {
+					console.error("ajouterCube - call failed"); 	
+					throw status + ' : ' + data;		
+				});
+				requestPromise.finally(function() {
+					requestservices.remove(url);			
+				});
+			},
 		}
 	}]);
 })(window.angular);
