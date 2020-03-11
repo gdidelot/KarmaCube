@@ -116,7 +116,26 @@ app.controller('gamecontroleur', ["$injector", "$scope", "$location", function($
 		scene.add( mesh );
 		return mesh;
 	};
-
+	
+	var genererCarte = function() {
+		for(var i = 0; i < 99; i++) {
+			for(var j = 0; j < 99; j++) {
+				setTimeout(function(){
+					cubeservices.ajouterCube(function (data) {
+						console.debug('cubeservices ajouterCube received');
+						if(data.isFailed) {
+							$rootScope.notify(gettextCatalog.getString(data.exception), 'warning');
+						}
+						else {
+							genererCube(data.response.Texture, data.response.PositionX, data.response.PositionY, data.response.PositionZ);
+						}
+						$scope.chargercarte = false;
+					}, 'grass_dirt.png', i * CUBESIZE, 0, j * CUBESIZE);
+				}, j + 1);
+			}
+		}
+	}
+	
     var initialisationScene = function() {
 		camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
 		camera.position.set( 0, 0, 100 );
@@ -147,27 +166,7 @@ app.controller('gamecontroleur', ["$injector", "$scope", "$location", function($
 		//floor.position.y = -0.5;
 		//floor.rotation.x = Math.PI / 2;
 		//scene.add(floor);
-		
-		for(var i = 0; i < 9; i++) {
-			for(var j = 0; j < 9; j++) {
-				cubeservices.ajouterCube(function (data) {
-				console.debug('cubeservices ajouterCube received');
-					if(data.isFailed) {
-						$rootScope.notify(gettextCatalog.getString(data.exception), 'warning');
-					}
-					else {
-						$scope.cubes = data.response;
-						
-						for(var i = 0; i < $scope.cubes.length; i++) {
-							var cube = $scope.cubes[i];
-							genererCube(cube.Texture, cube.PositionX, cube.PositionY, cube.PositionZ);
-						}
-					}
-					$scope.chargercarte = false;
-				}, 'grass_dirt.png', i * CUBESIZE, 0, j * CUBESIZE);
-			}
-		}
-		
+
 		// Génération des cubes
 		$scope.chargercarte = true;
 		cubeservices.obtenirCubes(function (data) {
