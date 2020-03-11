@@ -17,6 +17,7 @@ app.controller('gamecontroleur', ["$injector", "$scope", "$location", function($
 	var modalservice = $injector.get('ModalService');
 	var dataservices = $injector.get('dataservices');
 	var userservices = $injector.get('userservices');
+	var cubeservices = $injector.get('cubeservices');
 	
 	var scene = undefined;
 	var camera = undefined;
@@ -102,14 +103,14 @@ app.controller('gamecontroleur', ["$injector", "$scope", "$location", function($
 		stats.update();
 	}
 	
-	var genererCube = function(texture, positionX, positionY) {
+	var genererCube = function(texture, positionX, positionY, positionZ) {
 		var texture = new THREE.TextureLoader().load( 'themes/defaut/images/textures/' + texture);
 		var geometry = new THREE.BoxBufferGeometry( CUBESIZE, CUBESIZE, CUBESIZE );
 		var material = new THREE.MeshBasicMaterial( { map: texture } );
 		var mesh = new THREE.Mesh( geometry, material );
 		mesh.position.x = positionX;
 		mesh.position.y = positionY === undefined ? 0 : positionY;
-		mesh.position.z = 0;
+		mesh.position.z = positionZ === undefined ? 0 : positionZ;
 		mesh.addEventListener( 'click', onMeshClick, false );
 		meshes.push(mesh);
 		scene.add( mesh );
@@ -149,13 +150,23 @@ app.controller('gamecontroleur', ["$injector", "$scope", "$location", function($
 		
 		
 		// Génération des cubes
-		genererCube('grass_dirt.png', meshes.length * CUBESIZE);
-		genererCube('grass_dirt.png', meshes.length * CUBESIZE);
-		genererCube('grass_dirt.png', meshes.length * CUBESIZE);
-		genererCube('grass_dirt.png', meshes.length * CUBESIZE);
-		genererCube('grass_dirt.png', meshes.length * CUBESIZE);
-		genererCube('grass_dirt.png', meshes.length * CUBESIZE);
-		
+		$scope.chargercarte = true;
+		cubeservices.obtenirCubes(function (data) {
+			console.debug('cubeservices obtenirCubes received');
+			if(data.isFailed) {
+				$rootScope.notify(gettextCatalog.getString(data.exception), 'warning');
+			}
+			else {
+				$scope.cubes = data.response;
+				
+				for(var i = 0; i < $scope.cubes.length; i++) {
+					var cube = $scope.cubes[i];
+					genererCube(cube.Texture, cube.PositionX, cube.PositionY, cube.PositionZ);
+				}
+			}
+			$scope.chargercarte = false;
+		});
+				
 		// Lumière du jour
 		var light = new THREE.DirectionalLight( 0xaabbff, 0.3 );
 		light.position.x = 300;
